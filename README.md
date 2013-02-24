@@ -15,3 +15,29 @@ The main component is the master daemon - The master daemon will collect all of 
 The second component is the slave daemon.  The slave daemon will get the resource usage of the server it is installed on and then report back to the master daemon.
 
 The final component is the web interface.  I am not sure how I will implement this yet, but the basic idea is that it will show all of the data acquired from the daemons in a way that is easy to read.
+
+
+
+Requirements
+======
+
+Linux based machine.  Although LinMon may work on Windows (due to PHPSysInfo being cross-platform), only Linux compatability is guaranteed
+
+Apache (For web server)
+
+PHP (For daemons)
+
+PHP Safe Mode Disabled
+
+PHPSysInfo - A version will be included in this Git Repo to make installation easy, but you are also able to install your own version (not recommended).
+
+
+
+Notes
+======
+
+This is an ongoing project, you are more than welcome to make suggestions or submit pull requests.
+
+Please note that almost all testing of LinMon is being done on Ubuntu 10.04 and Ubuntu 12.04 machines.  In theory, everything should work fine on any Linux-based distro.
+
+The project is currently in Super-Mega-Pre-Alpha.  I wouldn't use it in any production environment just yet.
