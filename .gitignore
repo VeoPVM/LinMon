@@ -1,4 +1,4 @@
 .DS_Store
 .settings/com.aptana.editor.php.prefs
 .project
-.ctags.tmp
+ctags.tmp
