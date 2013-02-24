@@ -23,7 +23,7 @@ Requirements
 
 Linux based machine.  Although LinMon may work on Windows (due to PHPSysInfo being cross-platform), only Linux compatability is guaranteed
 
-Apache (For web server)
+Apache (For web interface)
 
 PHP (For daemons)
 
