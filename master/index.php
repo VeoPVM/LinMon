@@ -7,7 +7,7 @@ include 'config/config.php';
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
 // Bind to socket
-socket_bind($socket, $config, 6969) or die('Could not bind to address');
+socket_bind($socket, config['socket']['address'], $config['socket']['port']) or die('Could not bind to address');
 
 // Listen to socket
 socket_listen($socket);
