@@ -16,7 +16,7 @@ echo checkVersion();
 echo "Collecting data every ".$config['updateinterval']." seconds \n\n";
 
 while (true){
-	echo "Starting data collection \n";
+	collectionInfoStart();
 	sleep($config['updateinterval']);
 }
 ?>
