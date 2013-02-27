@@ -13,7 +13,7 @@ include 'functions/debug.php';
 
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
-debug_collctionInterval($config['debug'], $config['updateinterval']);
+debug_collectionInterval($config['debug'], $config['updateinterval']);
 
 while (true){
 	debug_collectionInfoStart($config['debug']);
