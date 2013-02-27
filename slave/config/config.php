@@ -4,7 +4,7 @@
 $config['updateinterval'] = 60;
 
 // Debug Mode.  Boolean.
-$config['debug'] = FALSE;
+$config['debug'] = TRUE;
 
 // Enable log file.  The log file will contain all data that is normally output when running in Daemon mode.  Boolean.
 //$config['log'] = FALSE;
