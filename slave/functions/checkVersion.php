@@ -6,8 +6,8 @@ function checkVersion() {
 	
 	if ($current[0] != $latest[0]) {
 		echo "A new version of the slave is available! \n
-		Your version: ".$current[0]." \n 
-		Latest version: ".$latest[0]." \n";
+		Your version: ".$current[1]." \n 
+		Latest version: ".$latest[1]." \n";
 	}
 }
 
