@@ -6,7 +6,7 @@ function collect_loadAvg($debug) {
 	
 	if ($debug == TRUE) {
 		$avg = explode(",", $avg);
-		echo "[DEBUG_COLLECT] Load Avg: ".$avg."\n";
+		echo "[DEBUG_COLLECT] Load Avg: ".$avg[0]."\n";
 	}
 	
 	return $avg;
