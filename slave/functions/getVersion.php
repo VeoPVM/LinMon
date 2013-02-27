@@ -8,10 +8,10 @@ function getVersion($mode) {
 	}
 	
 	if ($mode == "build") {
-		$version = $version[0];
+		$version = trim($version[0]);
 		return $version;
 	} elseif ($mode == "version") {
-		$version = $version[1];
+		$version = trim($version[1]);
 		return $version;
 	} else {
 		return "Invalid version mode \n";
