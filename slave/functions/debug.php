@@ -2,13 +2,13 @@
 
 function debug_collectionInfoStart($debug) {
     if ($debug == TRUE) {
-        echo "Collecting Data\n";
+        echo "[DEBUG] Collecting Data\n";
     }
 }
 
 function debug_collectionInterval($debug, $interval) {
     if ($debug == TRUE) {
-        echo "Collecting data every ".$interval." seconds \n\n";
+        echo "[DEBUG] Collecting data every ".$interval." seconds \n\n";
     }
 }
 
