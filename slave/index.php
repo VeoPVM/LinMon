@@ -8,9 +8,9 @@ include 'config/config.php';
 include 'functions/getVersion.php';
 include 'functions/checkVersion.php';
 
-echo "LinMon slave version ".getVersion("version")." started. \n";
-echo checkVersion();
-echo "Collecting data every ".$config['updateinterval']." seconds \n";
+echo "LinMon slave version ".getVersion("version")." started. \n\n";
+echo checkVersion()."\n\n";
+echo "Collecting data every ".$config['updateinterval']." seconds \n\n";
 
 while (true){
 	echo "Starting data collection \n";
