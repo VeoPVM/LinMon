@@ -1,16 +1,14 @@
 <?php
 
-include '../config/config.php';
-
-function collectionInfoStart() {
-    if ($config['debug'] == TRUE) {
+function debug_collectionInfoStart($debug) {
+    if ($config == TRUE) {
         echo "Collecting Data\n";
     }
 }
 
-function collectionInterval() {
-    if ($config['debug'] == TRUE) {
-        echo "Collecting data every ".$config['updateinterval']." seconds \n\n";
+function debug_collectionInterval($debug, $interval) {
+    if ($config == TRUE) {
+        echo "Collecting data every ".$interval." seconds \n\n";
     }
 }
 
