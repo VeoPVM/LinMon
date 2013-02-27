@@ -2,7 +2,13 @@
 
 function debug_collectionInfoStart($debug) {
     if ($debug == TRUE) {
-        echo "[DEBUG] Collecting Data\n";
+        echo "[DEBUG] Collecting data\n";
+    }
+}
+
+function debug_collectionInfoEnd($debug) {
+    if ($debug == TRUE) {
+        echo "[DEBUG] Finished collecting data\n";
     }
 }
 

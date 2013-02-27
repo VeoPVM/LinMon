@@ -17,6 +17,7 @@ debug_collectionInterval($config['debug'], $config['updateinterval']);
 
 while (true){
 	debug_collectionInfoStart($config['debug']);
+    debug_collectionInfoEnd($debug['debug']);
 	sleep($config['updateinterval']);
 }
 ?>
