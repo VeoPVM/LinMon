@@ -4,15 +4,17 @@ function getVersion($mode) {
 	$version = explode("-", file_get_contents("version"));
 	
 	if (!$version) {
-		echo "Error getting version \n";
+		return "Error getting version \n";
 	}
 	
 	if ($mode == "build") {
-		echo $version[0]." \n";
+		$version = $version[0];
+		return $version." \n";
 	} elseif ($mode == "version") {
-		echo $version[1]." \n";
+		$version = $version[1]
+		return $version." \n";
 	} else {
-		echo "Invalid version mode \n";
+		return "Invalid version mode \n";
 	}
 }
 

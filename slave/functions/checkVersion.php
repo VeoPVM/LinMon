@@ -5,9 +5,11 @@ function checkVersion() {
 	$latest = explode("-", file_get_contents("https://raw.github.com/VeoPVM/LinMon/master/slave/version"));
 	
 	if ($current[0] != $latest[0]) {
-		echo "A new version of the slave is available! \n
-		Your version: ".$current[1]." \n 
-		Latest version: ".$latest[1]." \n";
+		$current = $current[1];
+		$latest = $latest[1];
+		return "A new version of the slave is available! \n
+		Your version: ".$current." \n 
+		Latest version: ".$latest." \n";
 	}
 }
 
