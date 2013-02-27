@@ -11,12 +11,12 @@ include 'functions/checkVersion.php';
 // Debugging Functions
 include 'functions/debug.php';
 
-echo "LinMon slave version ".getVersion("version")." started. \n\n";
+echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
-echo "Collecting data every ".$config['updateinterval']." seconds \n\n";
+collctionInterval();
 
 while (true){
-	collectionInfoStart($config['debug']);
+	collectionInfoStart();
 	sleep($config['updateinterval']);
 }
 ?>
