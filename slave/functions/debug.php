@@ -8,7 +8,7 @@ function debug_collectionInfoStart($debug) {
 
 function debug_collectionInterval($debug, $interval) {
     if ($debug == TRUE) {
-        echo "[DEBUG] Collecting data every ".$interval." seconds \n\n";
+        echo "[DEBUG] Collecting data every ".$interval." seconds\n\n";
     }
 }
 
