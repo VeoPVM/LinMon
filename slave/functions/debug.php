@@ -1,7 +1,7 @@
 <?php
 
-function collectionInfoStart() {
-    if ($config['debug'] == TRUE) {
+function collectionInfoStart($debug) {
+    if ($debug == TRUE) {
         echo "Collecting Data\n";
     }
 }
