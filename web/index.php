@@ -1,8 +1,21 @@
+<?php
+//Display correct page
+if (!isset($_GET["p"])){ //See if page is set in URL
+	$page = "dashboard";	//If not then set page to default page
+} else {
+	$page = $_GET["p"]; 	//If set then set page to requested
+}
+
+//Check file exists
+if (!file_exists("pages/".$page.".php")){
+	$page = "404";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Linmon</title>
+<title>LinMon</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -29,7 +42,7 @@ body {
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<!--<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -42,24 +55,15 @@ body {
         </ul>
       </div>
       <!--/.nav-collapse --> 
-    </div>
+    <!--</div>
   </div>
-</div>
+</div>-->
+
 <div class="container">
-  <div class="row">
-    <div class="span4 offset4 well">
-      <legend>Please Sign In</legend>
-      <div class="alert alert-error"> <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password! </div>
-      <form method="POST" action="" accept-charset="UTF-8">
-        <input type="text" id="username" class="span4" name="username" placeholder="Username">
-        <input type="password" id="password" class="span4" name="password" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" name="remember" value="1">
-          Remember Me </label>
-        <button type="submit" name="submit" class="btn btn-info btn-block">Sign in</button>
-      </form>
-    </div>
-  </div>
+  <?php 
+  //Now include the actual page from the pages folder
+  include("pages/".$page.".php");
+  ?>
 </div>
 <!-- /container --> 
 
