@@ -11,7 +11,7 @@ function getVersion($mode) {
 		$version = $version[0];
 		return $version." \n";
 	} elseif ($mode == "version") {
-		$version = $version[1]
+		$version = $version[1];
 		return $version." \n";
 	} else {
 		return "Invalid version mode \n";
