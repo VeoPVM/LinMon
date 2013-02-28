@@ -23,7 +23,7 @@ while (true){
 	debug_collectionInfoStart($config['debug']);
 	
 	collect_loadAvg($config['debug']);
-    collect_memory();
+    collect_memory($config['debug']);
 	
     debug_collectionInfoEnd($config['debug']);
 	sleep($config['updateinterval']);

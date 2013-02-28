@@ -1,6 +1,6 @@
 <?php
 
-function collect_memory() {
+function collect_memory($debug) {
     $return = "";
     
     $memorystr = file_get_contents('/proc/meminfo');
@@ -19,6 +19,10 @@ function collect_memory() {
         
         // Return string contains the raw values separated by a comma
         $return = $return.",".$memory[$key];
+    }
+    
+    if ($debug == TRUE) {
+        echo "[DEBUG_COLLECT] Memory collected";
     }
     
     return $return;
