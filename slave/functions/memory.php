@@ -1,9 +1,13 @@
 <?php
 
 function collect_memory() {
-    $memorystr = file_get_contents('/proc/meminfo');
+    $return = "";
     
-    foreach ($memorystr as $key => $value) {
+    $memorystr = file_get_contents('/proc/meminfo');
+    $memoryarr = explode("\n", $memorystr);
+    
+    
+    foreach ($memoryarr as $key => $value) {
         // Remove spaces
     	$memory[$key] = trim($value);
         
