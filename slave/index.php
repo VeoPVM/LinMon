@@ -13,6 +13,7 @@ include 'functions/debug.php';
 
 // Stats Functions
 include 'functions/loadAvg.php';
+include 'memory';
 
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
@@ -22,6 +23,7 @@ while (true){
 	debug_collectionInfoStart($config['debug']);
 	
 	collect_loadAvg($config['debug']);
+    collect_memory();
 	
     debug_collectionInfoEnd($config['debug']);
 	sleep($config['updateinterval']);
