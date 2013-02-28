@@ -22,7 +22,7 @@ function collect_memory($debug) {
     }
     
     if ($debug == TRUE) {
-        echo "[DEBUG_COLLECT] Memory collected";
+        echo "[DEBUG_COLLECT] Memory collected\n";
     }
     
     return $return;
