@@ -13,7 +13,7 @@ include 'functions/debug.php';
 
 // Stats Functions
 include 'functions/loadAvg.php';
-include 'memory.php';
+include 'functions/memory.php';
 
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
