@@ -14,7 +14,7 @@ include 'functions/debug.php';
 // Stats Functions
 include 'functions/loadAvg.php';
 include 'functions/memory.php';
-include 'fucntions/misc.php';
+include 'functions/misc.php';
 
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
