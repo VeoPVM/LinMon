@@ -10,4 +10,14 @@ function collect_kernel($debug) {
     return $kernel;
 }
 
+function collect_hostname($debug) {
+    $hostname = exec('uname -n');
+    
+    if ($debug == TRUE) {
+        echo "[DEBUG_COLLECT] Hostname: ".$hostname."\n";
+    }
+    
+    return $hostname;
+}
+
 ?>

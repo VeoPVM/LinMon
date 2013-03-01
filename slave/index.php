@@ -26,6 +26,7 @@ while (true){
 	collect_loadAvg($config['debug']);
     collect_memory($config['debug']);
     collect_kernel($config['debug']);
+    collect_hostname($config['debug']);
     
 	
     debug_collectionInfoEnd($config['debug']);
