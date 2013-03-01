@@ -27,6 +27,7 @@ while (true){
     collect_memory($config['debug']);
     collect_kernel($config['debug']);
     collect_hostname($config['debug']);
+    collect_uptime($config['debug']);
     
 	
     debug_collectionInfoEnd($config['debug']);
