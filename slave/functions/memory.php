@@ -1,6 +1,6 @@
 <?php
 
-function collect_memory($debug) {
+function collect_memory($debug, $log) {
     $return = "";
     
     $memorystr = file_get_contents('/proc/meminfo');
@@ -22,7 +22,7 @@ function collect_memory($debug) {
     }
     
     if ($debug == TRUE) {
-        echo "[DEBUG_COLLECT] Memory collected\n";
+        debug("[DEBUG_COLLECT] Memory collected\n", $log);
     }
     
     return $return;

@@ -1,26 +1,26 @@
 <?php
 
-function collect_kernel($debug) {
+function collect_kernel($debug, $log) {
     $kernel = exec('uname -r') . " " . exec('uname -v');
 
     if ($debug == TRUE) {
-        echo "[DEBUG_COLLECT] Kernel: " . $kernel . "\n";
+        debug("[DEBUG_COLLECT] Kernel: " . $kernel . "\n", $log);
     }
 
     return $kernel;
 }
 
-function collect_hostname($debug) {
+function collect_hostname($debug, $log) {
     $hostname = exec('uname -n');
 
     if ($debug == TRUE) {
-        echo "[DEBUG_COLLECT] Hostname: " . $hostname . "\n";
+        debug("[DEBUG_COLLECT] Hostname: " . $hostname . "\n", $log);
     }
 
     return $hostname;
 }
 
-function collect_uptime($debug) {
+function collect_uptime($debug, $log) {
     $uptime = shell_exec('uptime');
     $uptime = explode(' up ', $uptime);
     $uptime = explode(',', $uptime[1]);
@@ -30,7 +30,7 @@ function collect_uptime($debug) {
     $uptimearr = explode(",", $uptime);
 
     if ($debug == TRUE) {
-        echo "[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " days " . $uptimearr[1] . " hours ".$uptimearr[2]." minutes\n";
+        debug("[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " days " . $uptimearr[1] . " hours ".$uptimearr[2]." minutes\n", $log);
     }
 
     return $uptime;
