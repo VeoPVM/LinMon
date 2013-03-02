@@ -25,7 +25,7 @@ function debug($echo, $log) {
     }
     
     if ($log == TRUE) {
-        file_put_contents("logs/collect.log", $echo, FILE_APPEND);
+        file_put_contents("logs/collect.log", date("r")."  -  ".$echo, FILE_APPEND);
     }
 }
 
