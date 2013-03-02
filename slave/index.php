@@ -25,7 +25,7 @@ echo checkVersion();
 debug_collectionInterval(DEBUG, INTERVAL, LOG);
 
 while (true){
-	debug_collectionInfoStart(DEBUG);
+	debug_collectionInfoStart(DEBUG, LOG);
 	
 	collect_loadAvg(DEBUG, LOG);
     collect_memory(DEBUG, LOG);
@@ -34,7 +34,7 @@ while (true){
     collect_uptime(DEBUG, LOG);
     
 	
-    debug_collectionInfoEnd(DEBUG);
+    debug_collectionInfoEnd(DEBUG, LOG);
 	sleep(INTERVAL);
 }
 ?>
