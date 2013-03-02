@@ -18,4 +18,15 @@ function debug_collectionInterval($debug, $interval) {
     }
 }
 
+function debug($echo, $log) {
+    
+    if ($echo != "" && $echo !== NULL) {
+    echo $echo;
+    }
+    
+    if ($log == TRUE) {
+        file_put_contents("logs/collect.log", $echo);
+    }
+}
+
 ?>

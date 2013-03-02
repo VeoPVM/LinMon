@@ -16,21 +16,24 @@ include 'functions/loadAvg.php';
 include 'functions/memory.php';
 include 'functions/misc.php';
 
+define("DEBUG", $config['debug']);
+define("LOG", $config['log']);
+
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
 debug_collectionInterval($config['debug'], $config['updateinterval']);
 
 while (true){
-	debug_collectionInfoStart($config['debug']);
+	debug_collectionInfoStart(DEBUG);
 	
-	collect_loadAvg($config['debug']);
-    collect_memory($config['debug']);
-    collect_kernel($config['debug']);
-    collect_hostname($config['debug']);
-    collect_uptime($config['debug']);
+	collect_loadAvg(DEBUG, LOG);
+    collect_memory(DEBUG, LOG);
+    collect_kernel(DEBUG, LOG);
+    collect_hostname(DEBUG, LOG);
+    collect_uptime(DEBUG, LOG);
     
 	
-    debug_collectionInfoEnd($config['debug']);
+    debug_collectionInfoEnd(DEBUG);
 	sleep($config['updateinterval']);
 }
 ?>
