@@ -37,3 +37,10 @@ This is an ongoing project, you are more than welcome to make suggestions or sub
 Please note that almost all testing of LinMon is being done on Ubuntu 10.04 and Ubuntu 12.04 machines.  In theory, everything should work fine on any Linux-based distro.
 
 The project is currently in Super-Mega-Pre-Alpha.  I wouldn't use it in any production environment just yet.
+
+
+
+License
+======
+
+This project uses the MIT license.  See the LICENSE file for details.
