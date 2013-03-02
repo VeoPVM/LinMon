@@ -18,10 +18,11 @@ include 'functions/misc.php';
 
 define("DEBUG", $config['debug']);
 define("LOG", $config['log']);
+define("INTERVAL", $config['updateinterval']);
 
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
-debug_collectionInterval($config['debug'], $config['updateinterval']);
+debug_collectionInterval(DEBUG, INTERVAL, LOG);
 
 while (true){
 	debug_collectionInfoStart(DEBUG);
@@ -34,6 +35,6 @@ while (true){
     
 	
     debug_collectionInfoEnd(DEBUG);
-	sleep($config['updateinterval']);
+	sleep(INTERVAL);
 }
 ?>

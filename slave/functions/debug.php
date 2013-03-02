@@ -1,20 +1,20 @@
 <?php
 
-function debug_collectionInfoStart($debug) {
+function debug_collectionInfoStart($debug, $log) {
     if ($debug == TRUE) {
-        echo "[DEBUG] Collecting data\n";
+        debug("[DEBUG] Collecting data\n", $log);
     }
 }
 
-function debug_collectionInfoEnd($debug) {
+function debug_collectionInfoEnd($debug, $log) {
     if ($debug == TRUE) {
-        echo "[DEBUG] Finished collecting data\n";
+        debug("[DEBUG] Finished collecting data\n", $log);
     }
 }
 
-function debug_collectionInterval($debug, $interval) {
+function debug_collectionInterval($debug, $interval, $log) {
     if ($debug == TRUE) {
-        echo "[DEBUG] Collecting data every ".$interval." seconds\n\n";
+        debug("[DEBUG] Collecting data every ".$interval." seconds\n\n", $log);
     }
 }
 
