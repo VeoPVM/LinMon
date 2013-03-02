@@ -32,6 +32,7 @@ while (true){
     collect_kernel(DEBUG, LOG);
     collect_hostname(DEBUG, LOG);
     collect_uptime(DEBUG, LOG);
+    collect_users(DEBUG, LOG);
     
 	
     debug_collectionInfoEnd(DEBUG, LOG);

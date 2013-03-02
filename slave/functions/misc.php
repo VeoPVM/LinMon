@@ -35,4 +35,25 @@ function collect_uptime($debug, $log) {
 
     return $uptime;
 }
+
+function collect_users($debug, $log) {
+    $who = shell_exec('who');
+    $who = explode("\n", $who);
+    
+    foreach ($who as $key => $value) {
+        $user = explode(" ", $value);
+        $users[$key] = $user[0];
+    }
+    
+    foreach ($users as $key => $value) {
+        $returnusers = $users[$key].",";
+    }
+    
+    if ($debug == TRUE) {
+        debug("[DEBUG_COLLECT] Users: ".str_replace(",", ", ", $returnusers)."\n", $log);
+    }
+    
+    return $returnusers;
+    
+}
 ?>
