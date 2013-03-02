@@ -8,7 +8,7 @@ function debug_collectionInfoStart($debug, $log) {
 
 function debug_collectionInfoEnd($debug, $log) {
     if ($debug == TRUE) {
-        debug("[DEBUG] Finished collecting data\n", $log);
+        debug("[DEBUG] Finished collecting data\n\n", $log);
     }
 }
 
