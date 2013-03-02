@@ -37,8 +37,7 @@ function collect_uptime($debug, $log) {
 }
 
 function collect_users($debug, $log) {
-    $who = shell_exec('who');
-    $who = explode("\n", $who);
+    exec('who', $who);
     
     foreach ($who as $key => $value) {
         $user = explode(" ", $value);
