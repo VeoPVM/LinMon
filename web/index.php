@@ -22,10 +22,76 @@ if (!file_exists("pages/".$page.".php")){
 
 <!-- Le styles -->
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 <style>
 body {
-	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	background-color:;
 }
+
+/*Custom CSS*/
+.page-title {
+	background-color: #eeeeee;
+	border-radius: 4px;
+	border: 1px solid #CCCCCC;
+	font-size: 22px;
+	padding-left: 10px;	
+	margin-top:0;
+}
+
+#sidebar.nav-tabs.nav-stacked li {
+	margin-bottom: 5px;
+}
+
+#sidebar.nav-tabs.nav-stacked li a {
+	border-radius:5px;
+	color:#333;
+	background-color:;
+}
+
+.module .module-header {
+	position: relative;
+	height: 40px;
+	background: #eeeeee;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border: 1px solid #CCCCCC;	
+}
+
+.module .module-header h3 {
+	margin-left:10px;
+	line-height:20px;
+	font-size:18px;	
+}
+
+.module-table .module-content {
+	padding: 0;
+	
+}
+
+.module-table .module-content .table {
+	margin:0;
+	border-top-left-radius:0;
+	border-top-right-radius:0;
+}
+
+td.memory .progress {
+	margin-bottom:0;	
+}
+
+td.actions {
+	width:70px;
+}
+
+td.status {
+	width:45px;
+}
+
+/* NavBar Fixes for Responsive */
+@media (min-width: 981px) {
+    body {
+      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+  }
 </style>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -42,28 +108,22 @@ body {
 </head>
 
 <body>
-<!--<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="brand" href="#">LinMon</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <!--/.nav-collapse --> 
-    <!--</div>
-  </div>
-</div>-->
+<?php if ($_GET['p'] != "login") { 
+	include('_includes/template/navbar.php');
+}
+?>
+
 
 <div class="container">
+  <div class="row">
   <?php 
+  //Include sidebar
+  include("_includes/template/sidebar.php");
+  
   //Now include the actual page from the pages folder
   include("pages/".$page.".php");
   ?>
+  </div>
 </div>
 <!-- /container --> 
 
