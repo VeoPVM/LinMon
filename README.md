@@ -16,6 +16,13 @@ Slave Servers - Each server will need to run the slave software.  This will be a
 
 
 
+Current Release 0.1 Plan
+======
+
+The plan for 0.1 is to get a stable release out that is usable and useful.  After 0.1, we will add more features, and do a ton of code re-factoring.  We also intend to make LinMon fully object oriented in future releases.
+
+
+
 Requirements
 ======
 
