@@ -26,11 +26,17 @@ function collect_uptime($debug, $log) {
     $uptime = explode(',', $uptime[1]);
     $uptimehourmin = explode(":", $uptime[1]);
     $uptime = str_replace("days", "", $uptime[0]);
-    $uptime = $uptime[0].','.$uptimehourmin[0].','.$uptimehourmin[1];
+    $uptime = $uptime.','.$uptimehourmin[0].','.$uptimehourmin[1];
     $uptimearr = explode(",", $uptime);
+	
+	if ($uptime == "1") {
+		$day = "day";
+	} else {
+		$day = "days";
+	}
 
     if ($debug == TRUE) {
-        debug("[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " days " . $uptimearr[1] . " hours ".$uptimearr[2]." minutes\n", $log);
+        debug("[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " " . $day . " " . $uptimearr[1] . " hours ".$uptimearr[2]." minutes\n", $log);
     }
 
     return $uptime;
