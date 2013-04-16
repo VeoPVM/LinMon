@@ -54,7 +54,7 @@ while (true){
     
 	db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users);
     
-    profile_End($profile);
+    profile_End($profile, LOG);
     
     debug_collectionInfoEnd(DEBUG, LOG);
 	sleep(INTERVAL);
