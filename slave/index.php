@@ -19,6 +19,9 @@ include 'functions/misc.php';
 // Database Functions
 include 'functions/database.php';
 
+// Profiling Functions
+include 'functions/profiling.php';
+
 // LinMon Settings
 define("SLAVEID", $config['slaveid']);
 define("DEBUG", $config['debug']);
@@ -39,6 +42,8 @@ debug_collectionInterval(DEBUG, INTERVAL, LOG);
 
 while (true){
 	debug_collectionInfoStart(DEBUG, LOG);
+    
+    $profile = profile_Start();
 	
 	$loadavg = collect_loadAvg(DEBUG, LOG);
     $memory = collect_memory(DEBUG, LOG);
@@ -48,6 +53,8 @@ while (true){
     $users = collect_users(DEBUG, LOG);
     
 	db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users);
+    
+    profile_End($profile);
     
     debug_collectionInfoEnd(DEBUG, LOG);
 	sleep(INTERVAL);
