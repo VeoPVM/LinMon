@@ -11,18 +11,21 @@ function collect_memory($debug, $log) {
         // Remove spaces
     	$memory[$key] = trim($value);
         
-        // Only get the value, not the label as well
         $memoryarray = explode(":", $memory[$key]);
         
         // Only get the raw value, without the kB suffix
-        $memory[$key] = $memoryarray[0];
+        $memory[$key] = trim($memoryarray[1]);
+        $memory[$key] = str_replace(" kB", "", $memory[$key]);
         
         // Return string contains the raw values separated by a comma
-        $return = $return.",".$memory[$key];
+        if ($memory[$key] != "") {
+            $return = $return.$memory[$key].",";
+        }
     }
     
     if ($debug == TRUE) {
         debug("[DEBUG_COLLECT] Memory collected\n", $log);
+        debug("[DEBUG_COLLECT] Memory values: ".$return."\n", $log);
     }
     
     return $return;
