@@ -22,22 +22,53 @@ function collect_hostname($debug, $log) {
 
 function collect_uptime($debug, $log) {
     $uptime = shell_exec('uptime');
-    $uptime = explode(' up ', $uptime);
-    $uptime = explode(',', $uptime[1]);
-    $uptimehourmin = explode(":", $uptime[1]);
-    $uptime = str_replace("days", "", $uptime[0]);
-    $uptime = $uptime.','.$uptimehourmin[0].','.$uptimehourmin[1];
-    $uptimearr = explode(",", $uptime);
-	
-	if ($uptime == "1") {
-		$day = "day";
-	} else {
-		$day = "days";
-	}
-
-    if ($debug == TRUE) {
-        debug("[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " " . $day . " " . $uptimearr[1] . " hours ".$uptimearr[2]." minutes\n", $log);
+    
+    // Check if up more than 24 hours
+    if (strpos($uptime, 'day') !== FALSE) {
+        $uptime = explode(' up ', $uptime);
+        $uptime = explode(',', $uptime[1]);
+        $uptimehourmin = explode(":", $uptime[1]);
+        $uptime = str_replace("days", "", $uptime[0]);
+        $uptime = $uptime.','.$uptimehourmin[0].','.$uptimehourmin[1];
+        $uptimearr = explode(",", $uptime);
+    
+        if ($uptime == "1") {
+            $day = "day";
+        } else {
+            $day = "days";
+        }
+    
+        if ($debug == TRUE) {
+            debug("[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " " . $day . " " . $uptimearr[1] . " hours ".$uptimearr[2]." minutes\n", $log);
+        }
+    } else {
+        $uptime = explode(' up ', $uptime);
+        $uptime = explode(',', $uptime[1]);
+        $uptime = explode(':', $uptime[0]);
+        
+        if ($uptime[0] < 2) {
+            $hourperiod = 'hour';
+        } else {
+            $hourperiod = 'hours';
+        }
+        
+        if ($uptime[1] == 1) {
+            $minperiod = 'minute';
+        } else {
+            $minperiod = 'minutes';
+        }
+        
+        $hours = $uptime[0];
+        $mins = $uptime[1];
+        
+        $uptime = $uptime[0].",".$uptime[1];
+        
+        if ($debug == TRUE) {
+            debug("[DEBUG_COLLECT] Uptime: " . $hours . " " . $hourperiod . " " . $mins . " " . $minperiod . "\n", $log);
+        }
+        
     }
+    
 
     return $uptime;
 }
