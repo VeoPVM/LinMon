@@ -11,7 +11,7 @@ fi
 
 if [ $1 == "stop" ] ; then
 	pid=( $(<linmon.pid) )
-	kill $pid
+	kill -9 $pid
 	echo "LinMon stopped."
 fi
 
