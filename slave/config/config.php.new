@@ -1,0 +1,26 @@
+<?php
+
+// Unique ID for this slave.  You may want to use the hostname, or an alias, it is up to you.  This is used to identify your slave on the web interface.  String.
+$config['id'] = "slave1";
+
+// How often (in seconds) to collect and send the details to the database.  Integer.
+$config['updateinterval'] = 60;
+
+// Debug Mode.  Boolean.
+$config['debug'] = TRUE;
+
+// Enable log file.  The log file will contain all data that is normally output when running in Daemon mode.  Boolean.
+$config['log'] = TRUE;
+
+// MySQL username.  String.
+$config['dbuser'] = "username";
+
+// MySQL password.  String.
+$config['dbpass'] = "password";
+
+// MySQL host.  String.
+$config['dbhost'] = "mysql.yourserver.com";
+
+// MySQL database name.  String.
+$config['dbname'] = "linmon";
+?>
