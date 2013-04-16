@@ -16,9 +16,22 @@ include 'functions/loadAvg.php';
 include 'functions/memory.php';
 include 'functions/misc.php';
 
+// Database Functions
+include 'functions/database.php';
+
+// LinMon Settings
+define("SLAVEID", $config['slaveid']);
 define("DEBUG", $config['debug']);
 define("LOG", $config['log']);
 define("INTERVAL", $config['updateinterval']);
+
+// Database Settings
+define("DBUSER", $config['dbuser']);
+define("DBPASS", $config['dbpass']);
+define("DBHOST", $config['dbhost']);
+define("DBNAME", $config['dbname']);
+
+$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
 echo "LinMon slave version ".getVersion("version")." started \n\n";
 echo checkVersion();
@@ -27,14 +40,15 @@ debug_collectionInterval(DEBUG, INTERVAL, LOG);
 while (true){
 	debug_collectionInfoStart(DEBUG, LOG);
 	
-	collect_loadAvg(DEBUG, LOG);
-    collect_memory(DEBUG, LOG);
-    collect_kernel(DEBUG, LOG);
-    collect_hostname(DEBUG, LOG);
-    collect_uptime(DEBUG, LOG);
-    collect_users(DEBUG, LOG);
+	$loadavg = collect_loadAvg(DEBUG, LOG);
+    $memory = collect_memory(DEBUG, LOG);
+    $kernel = collect_kernel(DEBUG, LOG);
+    $hostname = collect_hostname(DEBUG, LOG);
+    $uptime = collect_uptime(DEBUG, LOG);
+    $users = collect_users(DEBUG, LOG);
     
-	
+	db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users);
+    
     debug_collectionInfoEnd(DEBUG, LOG);
 	sleep(INTERVAL);
 }
