@@ -36,27 +36,27 @@ define("DBNAME", $config['dbname']);
 
 $connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
-echo "LinMon slave version ".getVersion("version")." started \n\n";
+echo "LinMon slave version " . getVersion("version") . " started \n\n";
 echo checkVersion();
 debug_collectionInterval(DEBUG, INTERVAL, LOG);
 
-while (true){
-	debug_collectionInfoStart(DEBUG, LOG);
-    
+while (true) {
+    debug_collectionInfoStart(DEBUG, LOG);
+
     $profile = profile_Start();
-	
-	$loadavg = collect_loadAvg(DEBUG, LOG);
+
+    $loadavg = collect_loadAvg(DEBUG, LOG);
     $memory = collect_memory(DEBUG, LOG);
     $kernel = collect_kernel(DEBUG, LOG);
     $hostname = collect_hostname(DEBUG, LOG);
     $uptime = collect_uptime(DEBUG, LOG);
     $users = collect_users(DEBUG, LOG);
-    
-	db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users);
-    
+
+    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users);
+
     profile_End($profile, LOG);
-    
+
     debug_collectionInfoEnd(DEBUG, LOG);
-	sleep(INTERVAL);
+    sleep(INTERVAL);
 }
 ?>

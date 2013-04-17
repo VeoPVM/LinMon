@@ -14,19 +14,18 @@ function debug_collectionInfoEnd($debug, $log) {
 
 function debug_collectionInterval($debug, $interval, $log) {
     if ($debug == TRUE) {
-        debug("[DEBUG] Collecting data every ".$interval." seconds\n\n", $log);
+        debug("[DEBUG] Collecting data every " . $interval . " seconds\n\n", $log);
     }
 }
 
 function debug($echo, $log) {
-    
+
     if ($echo != "" && $echo !== NULL) {
-    echo $echo;
+        echo $echo;
     }
-    
+
     if ($log == TRUE) {
-        file_put_contents("logs/collect.log", date("r")."  -  ".$echo, FILE_APPEND);
+        file_put_contents("logs/collect.log", date("r") . "  -  " . $echo, FILE_APPEND);
     }
 }
-
 ?>
