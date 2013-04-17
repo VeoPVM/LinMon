@@ -6,7 +6,7 @@ function profile_Start() {
     return $start;
 }
 
-function profile_End($start, $lgo) {
+function profile_End($start, $log) {
     $end = microtime(true);
     $end = $end - $start;
 
