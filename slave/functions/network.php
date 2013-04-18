@@ -6,7 +6,7 @@ function collect_networkUsage($debug, $log) {
     $usage = explode(" ", $usage);
 
     if ($debug == TRUE) {
-        debug("[DEBUG_COLLECT] Network Usage collected: IN:" . $usage[0] . " | OUT: " . $usage[6] . "\n", $log);
+        debug("[DEBUG_COLLECT] Network Usage collected: IN: " . $usage[0] . "KBytes/s | OUT: " . $usage[6] . "KBytes/s\n", $log);
     }
 
     $return = $usage[0] . ',' . $usage[6];
