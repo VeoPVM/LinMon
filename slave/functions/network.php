@@ -1,7 +1,7 @@
 <?php
 
 function collect_networkUsage($debug, $log) {
-    $usage = trim(exec('ifstat -S 0.1 1'));
+    $usage = shell_exec('ifstat -S 0.1 1');
 
     $usage = explode(" ", $usage);
 
