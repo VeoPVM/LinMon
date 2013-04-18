@@ -54,7 +54,7 @@ while (true) {
     $users = collect_users(DEBUG, LOG);
     $network = collect_networkUsage(DEBUG, LOG);
 
-    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users);
+    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network);
 
     profile_End($profile, LOG);
 
