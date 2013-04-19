@@ -34,6 +34,8 @@ PHP
 
 PHP Safe Mode Disabled
 
+ifstat for network usage monitoring.  You can install this in Debian and Ubuntu with this command:"apt-get install ifstat"
+
 
 
 Notes
