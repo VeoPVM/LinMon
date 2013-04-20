@@ -21,8 +21,8 @@ if (!file_exists("pages/".$page.".php")){
 <meta name="author" content="">
 
 <!-- Le styles -->
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <link href="_includes/css/custom.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -43,11 +43,9 @@ if (!file_exists("pages/".$page.".php")){
 	include('_includes/template/navbar.php');
 }
 ?>
-
-
 <div class="container">
   <div class="row">
-  <?php 
+    <?php 
   //Include sidebar
   include("_includes/template/sidebar.php");
   
@@ -61,7 +59,11 @@ if (!file_exists("pages/".$page.".php")){
 <!-- Le javascript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+<!-- Custom JS --> 
+<script src="_includes/js/custom.js"></script>
 </body>
 </html>
