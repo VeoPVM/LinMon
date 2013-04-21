@@ -1,4 +1,21 @@
 <?php
+// Configuration
+include('_includes/config/config.php');
+
+// Database Functions
+include('_includes/functions/database.php');
+
+//Getting Data
+include('_includes/functions/getNode.php');
+
+// Database Settings
+define("DBUSER", $config['dbuser']);
+define("DBPASS", $config['dbpass']);
+define("DBHOST", $config['dbhost']);
+define("DBNAME", $config['dbname']);
+
+$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+
 //Display correct page
 if (!isset($_GET["p"])){ //See if page is set in URL
 	$page = "dashboard";	//If not then set page to default page
@@ -10,6 +27,8 @@ if (!isset($_GET["p"])){ //See if page is set in URL
 if (!file_exists("pages/".$page.".php")){
 	$page = "404";
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +69,7 @@ if (!file_exists("pages/".$page.".php")){
   include("_includes/template/sidebar.php");
   
   //Now include the actual page from the pages folder
+  
   include("pages/".$page.".php");
   ?>
   </div>

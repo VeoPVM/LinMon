@@ -1,0 +1,16 @@
+<?php
+
+
+// MySQL username.  String.
+$config['dbuser'] = "username";
+
+// MySQL password.  String.
+$config['dbpass'] = "password";
+
+// MySQL host.  String.
+$config['dbhost'] = "mysql.yourserver.com";
+
+// MySQL database name.  String.
+$config['dbname'] = "linmon";
+
+?>
