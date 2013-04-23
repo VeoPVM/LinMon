@@ -22,21 +22,16 @@ function getNode() {
 	while($getNode->fetch()){
 		$memory = explode(",", $memory);
 		
-		$memory_percent = round($memory[1] * 100 / $memory[0]);
+		$memory_use = round(100 * ((($memory[0] - $memory[1] + $memory[2] + $memory[3]) - $memory[0]) / $memory[0]));
 		
-		if ($memory_percent < 70) {
-			$mem_progress = "progress-success";
-		} else if ($memory_percent >= 71 && $memory_percent <= 85) {
-			$mem_progress = "progress-warning"; 
-		} else if ($memory_percent >= 86 && $memory_percent <=100) {
-			$mem_progress = "progress-danger";	
-		}
-			
+		$memory_cache = round(100 * (($memory[2] + $memory[3]) / $memory[0]));
+		
 		
     	$output = "<tr id=\"".$id."\">";
         $output .= "<td>".$id."</td>";
-        $output .= "<td class=\"memory\"><div class=\"progress progress-striped ".$mem_progress."\">";
-        $output .= "<div class=\"bar\" style=\"width: ".$memory_percent."%;\">".$memory_percent."%</div>";
+        $output .= "<td class=\"memory\"><div class=\"progress\">";
+        $output .= "<div class=\"bar bar-danger bar-tooltip\" style=\"width: \"0%\" data-toggle=\"tooltip\" title=\"Memory Use\" data-percentage=\"".$memory_use."\">".$memory_use."%</div>";
+		$output .= "<div class=\"bar bar-success bar-tooltip\" style=\"width: \"0%\" data-toggle=\"tooltip\" title=\"Cache\" data-percentage=\"".$memory_cache."\">".$memory_cache."%</div>";
         $output .= "</div></td>";
         $output .= "<td>".$loadavg."</td>";
         $output .= "<td class=\"status\"><span class=\"label label-success\">Online</span></td>";
