@@ -3,3 +3,7 @@
 .project
 ctags.tmp
 slave/config/config.php
+dwsync.xml
+
+
+web/_includes/config/config.php
