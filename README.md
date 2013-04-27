@@ -23,18 +23,75 @@ The plan for 0.1 is to get a stable release out that is usable and useful.  Afte
 
 
 
-Requirements
+Web Requirements
+======
+
+Apache
+
+PHP
+
+
+
+Slave Requirements
 ======
 
 Linux based machine.
-
-Apache (For web interface)
 
 PHP
 
 PHP Safe Mode Disabled
 
-ifstat for network usage monitoring.  You can install this in Debian and Ubuntu with this command:"apt-get install ifstat"
+ifstat
+
+Git
+
+
+
+Web Installation
+======
+
+Depending on the web server that you are installing LinMon on, you can install it different ways.  If you are running the slave on the web server as well, you could clone the whole repo and then set up a symbolic link to your web directory.  Here is an example of this:
+
+Make a directory for LinMon.  The location of this doesn't really matter.
+```cd /home ; mkdir LinMon ; cd LinMon```
+
+Clone the repo into the LinMon folder
+```git clone git://github.com/VeoPVM/LinMon.git .```
+
+Set up the symbolic link to the web server folder
+```ln -s /home/LinMon/web/ /var/www/LinMon```
+
+
+You should then be able to access the LinMon web interface via the webserver.
+To keep LinMon up to date, you can run this command:
+```git pull```
+
+
+You can also follow these steps even if you aren't running a slave on the webserver.  Installing the web interface on a shared host is also easy, just upload the folder via FTP.  It is a little bit of extra work to update the files manually via FTP, but you shouldn't encounter any issues.
+
+
+
+
+Slave Installation
+======
+
+Setting up the slave is very similar to setting up the web interface.
+
+Make a directory for LinMon.  The location of this doesn't really matter.
+```cd /home ; mkdir LinMon ; cd LinMon```
+
+Clone the repo into the LinMon folder
+```git clone git://github.com/VeoPVM/LinMon.git .```
+
+Give the start script execute permissions
+```cd slave/ ; chmod +x start.sh```
+
+Start LinMon
+```./start.sh start```
+
+
+You will need to edit the config file before starting LinMon.  To keep LinMon up to date you can run this command when in the main LinMon folder:
+```git pull```
 
 
 
@@ -43,9 +100,9 @@ Notes
 
 This is an ongoing project, you are more than welcome to make suggestions or submit pull requests.
 
-Please note that almost all testing of LinMon is being done on Ubuntu 10.04 and Ubuntu 12.04 machines.  In theory, everything should work fine on any Linux-based distro.
+Please note that almost all testing of LinMon is being done on Debian or Ubuntu.  Installation instructions may vary with different operating systems.  In theory, everything should work fine on any Linux-based distro.
 
-The project is currently in Super-Mega-Pre-Alpha.  I wouldn't use it in any production environment just yet.
+The project is currently in Beta.  You should be safe to use it in production as soon as 0.1 stable goes live.
 
 
 
