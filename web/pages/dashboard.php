@@ -13,7 +13,7 @@
             <th>Memory</th>
             <th>Load Average</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th width="68px">Actions</th>
           </tr>
         </thead>
         <tbody>

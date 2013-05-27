@@ -70,7 +70,7 @@ setTimeout(function(){
 
 			me.text((current_perc)+'%');
 
-		}, 50);
+		}, 100);
 
 	});
 
