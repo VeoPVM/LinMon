@@ -24,7 +24,7 @@ include 'functions/database.php';
 include 'functions/profiling.php';
 
 // LinMon Settings
-define("SLAVEID", $config['slaveid']);
+define("SLAVEID", $config['id']);
 define("DEBUG", $config['debug']);
 define("LOG", $config['log']);
 define("INTERVAL", $config['updateinterval']);
