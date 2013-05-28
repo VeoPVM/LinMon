@@ -12,8 +12,6 @@ function collect_networkUsage($debug, $log) {
 			array_push($network, $value);
 		}
 	}
-	
-	print_r($network);
 
     if ($debug == TRUE) {
         debug("[DEBUG_COLLECT] Network Usage collected: IN: " . $network[0] . " KBytes/s | OUT: " . $network[1] . " KBytes/s\n", $log);
