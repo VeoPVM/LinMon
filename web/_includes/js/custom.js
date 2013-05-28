@@ -70,11 +70,11 @@ setTimeout(function(){
 
 			me.text((current_perc)+'%');
 
-		}, 100);
+		}, 0);
 
 	});
 
-},300);
+},0);
 
 //Initialise tooltips
 $('.bar-tooltip').tooltip()
