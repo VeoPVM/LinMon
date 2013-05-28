@@ -1,6 +1,4 @@
 <?php
-
-
 // MySQL username.  String.
 $config['dbuser'] = "username";
 
@@ -13,4 +11,6 @@ $config['dbhost'] = "mysql.yourserver.com";
 // MySQL database name.  String.
 $config['dbname'] = "linmon";
 
+// Show WA CPU Column. Boolean.
+$config['wacpu'] = false;
 ?>
