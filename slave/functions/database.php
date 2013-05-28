@@ -16,7 +16,7 @@ function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime
         die("Can't prepare!");
     }
 
-    $stmt -> bind_param('issssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu);
+    $stmt -> bind_param('isssssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu);
 
     $stmt -> execute();
 
