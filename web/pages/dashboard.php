@@ -12,6 +12,7 @@
             <th>Node Name</th>
             <th>Memory</th>
             <th>Load Average</th>
+            <?php if ($config['wacpu']) { echo "<th>WA CPU</th>"; } ?>
             <th>Status</th>
             <th width="68px">Actions</th>
           </tr>
