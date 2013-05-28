@@ -9,14 +9,14 @@ function db_connect($host, $user, $pass, $dbname) {
     return $connect;
 }
 
-function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network) {
+function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu) {
     $time = time();
 
-    if (!$stmt = $connect -> prepare("INSERT INTO data (time, id, loadavg, memory, kernel, hostname, uptime, users, network) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+    if (!$stmt = $connect -> prepare("INSERT INTO data (time, id, loadavg, memory, kernel, hostname, uptime, users, network, cpu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
         die("Can't prepare!");
     }
 
-    $stmt -> bind_param('issssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network);
+    $stmt -> bind_param('issssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu);
 
     $stmt -> execute();
 

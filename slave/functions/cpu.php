@@ -23,9 +23,6 @@ function collect_cpuUsage($debug, $log) {
         debug("[DEBUG_COLLECT] CPU Usage: ".$cpu."% WA CPU Usage: ".$wa."%\n", $log);
     }
 	
-	// reset usage variable
-	$usage = null;
-	
     $return = $cpu.",".$wa;
 
     return $return;
