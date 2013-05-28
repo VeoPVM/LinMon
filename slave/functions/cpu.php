@@ -4,7 +4,9 @@ function collect_cpuUsage($debug, $log) {
     $usage = explode(" ", exec('vmstat 2 2'));
 	
 	// Get CPU usage
-	$cpu = 100 - $usage[43];
+	$cpu = $usage[43];
+	settype($cpu, "integer");
+	$cpu = 100 - $cpu;
 	
 	// Get WA CPU usage
 	$wa = $usage[44];
