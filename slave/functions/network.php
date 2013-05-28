@@ -5,13 +5,21 @@ function collect_networkUsage($debug, $log) {
 
     $usage = explode(" ", $usage);
 	
-	print_r($usage);
+	$network = array();
+	
+	foreach ($usage as $key => $value) {
+		if ($value != "") {
+			array_push($network, $value);
+		}
+	}
+	
+	print_r($network);
 
     if ($debug == TRUE) {
-        debug("[DEBUG_COLLECT] Network Usage collected: IN: " . $usage[0] . " KBytes/s | OUT: " . $usage[6] . " KBytes/s\n", $log);
+        debug("[DEBUG_COLLECT] Network Usage collected: IN: " . $network[0] . " KBytes/s | OUT: " . $network[1] . " KBytes/s\n", $log);
     }
 
-    $return = $usage[0] . ',' . $usage[6];
+    $return = $network[0] . ',' . $network[1];
 
     return $return;
 
