@@ -11,8 +11,6 @@ function collect_cpuUsage($debug, $log) {
 		}
 	}
 	
-	print_r($cpu);
-	
 	// Get CPU usage
 	$cpu = $cpuusage[14];
 	settype($cpu, "integer");
