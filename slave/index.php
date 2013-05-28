@@ -16,6 +16,7 @@ include 'functions/loadAvg.php';
 include 'functions/memory.php';
 include 'functions/misc.php';
 include 'functions/network.php';
+include 'functions/cpu.php';
 
 // Database Functions
 include 'functions/database.php';
@@ -53,6 +54,7 @@ while (true) {
     $uptime = collect_uptime(DEBUG, LOG);
     $users = collect_users(DEBUG, LOG);
     $network = collect_networkUsage(DEBUG, LOG);
+	$cpu = collect_cpuUsage(DEBUG, LOG);
 
     db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network);
 
