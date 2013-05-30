@@ -47,8 +47,8 @@ function getNode() {
 		  
 		  $output = "<tr id=\"".$id."\">";
 		  $output .= "<td>".$id."</td>";
-		  $output .= "<td class=\"memory\"><div class=\"progress\">";
-		  $output .= "<div class=\"bar bar-danger bar-tooltip\" style=\"width: \"0%\" data-toggle=\"tooltip\" title=\"Memory Use\" data-percentage=\"".$memory_use."\">".$memory_use."%</div>";
+		  $output .= "<td class=\"memory\"><div class=\"progress active\">";
+		  $output .= "<div class=\"bar bar-danger bar-tooltip\" style=\"width: 0%\" data-percentage=\"".$memory_use."%\" data-toggle=\"tooltip\" title=\"Memory Use\" \">".$memory_use."%</div>";
 		  $output .= "</div></td>";
 		  $output .= "<td>".$loadavg."</td>";
 		  $output .= "<td>".$cpu[0]."</td>";
