@@ -33,7 +33,7 @@ function getNode() {
 	  
 	  while($getNode->fetch()){
 		  $memory = explode(",", $memory);
-		  $memory_use = round(100 * (($memory[0] - $memory[1]) / $memory[0]));
+		  $memory_use = round(($memory[0] - $memory[1] - $memory[2] - $memory[3]) / $memory[0] * 100);
 		  
 		  $time = intval($time);
 		  
