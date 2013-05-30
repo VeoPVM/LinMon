@@ -55,7 +55,7 @@ function getNode() {
 		  if ($config['wacpu']) { $output .= "<td>".$cpu[1]."</td>";} 
 			
 		  $output .= "<td class=\"status\">".$status."</td>";
-		  $output .= "<td class=\"actions\"><div class=\"btn-group\"><a href=\"#\" class=\"btn btn-small  toggle-row\"><i class=\"icon-plus\"></i></a> <a href=\"#\" class=\"btn btn-small \"><i class=\"icon-remove\"></i></a></div></td>";
+		  /*$output .= "<td class=\"actions\"><div class=\"btn-group\"><a href=\"#\" class=\"btn btn-small  toggle-row\"><i class=\"icon-plus\"></i></a> <a href=\"#\" class=\"btn btn-small \"><i class=\"icon-remove\"></i></a></div></td>";*/
 		  $output .= "</tr>";
 		  
 		  echo $output;

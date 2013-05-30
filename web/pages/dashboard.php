@@ -15,7 +15,7 @@
             <th>CPU</th>
             <?php if ($config['wacpu']) { echo "<th>WA CPU</th>"; } ?>
             <th>Status</th>
-            <th width="68px">Actions</th>
+            <!--<th width="68px">Actions</th>-->
           </tr>
         </thead>
         <tbody>
