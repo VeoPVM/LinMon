@@ -100,7 +100,7 @@ You will need to edit the config file before starting LinMon.  To keep LinMon up
 Known Issues
 ======
 
-LinMon is known not to work with the Cloudflare Javascript (JS) optimizations.  You should either disable this in your Cloudflare control panel or serve LinMon through a Cloudflare-disabled subdomain.
+LinMon is known not to work with the Cloudflare Javascript (JS) optimizations.  You should either disable this in your Cloudflare control panel or serve LinMon through a Cloudflare-disabled subdomain.  In addition, LinMon is also known not to work with the Cloudflare "Rocket Loader" feature.  You should disable this feature or serve LinMon through a Cloudflare-disabled subdomain. 
 
 
 
