@@ -51,6 +51,7 @@ function getNode() {
 		  $output .= "<div class=\"bar bar-danger bar-tooltip\" style=\"width: \"0%\" data-toggle=\"tooltip\" title=\"Memory Use\" data-percentage=\"".$memory_use."\">".$memory_use."%</div>";
 		  $output .= "</div></td>";
 		  $output .= "<td>".$loadavg."</td>";
+		  $output .= "<td>".$cpu[0]."</td>";
 		  if ($config['wacpu']) { $output .= "<td>".$cpu[1]."</td>";} 
 			
 		  $output .= "<td class=\"status\">".$status."</td>";
