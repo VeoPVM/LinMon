@@ -83,6 +83,10 @@ function collect_users($debug, $log) {
     foreach ($users as $key => $value) {
         $returnusers = $users[$key] . ",";
     }
+	
+	if ($returnusers == "" || $returnusers == NULL) {
+		$returnusers = "Nobody is logged in";
+	}
 
     if ($debug == TRUE) {
         debug("[DEBUG_COLLECT] Users: " . str_replace(",", ", ", $returnusers) . "\n", $log);
