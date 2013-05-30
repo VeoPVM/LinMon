@@ -15,11 +15,11 @@ function getNode() {
 	
 	for ($i = 0; $i <= ($getDistinctNodes->num_rows - 1); $i++) {	
 		
-	  $getNode = $connect->prepare("SELECT `id`, `loadavg`, `memory` FROM `data` WHERE `id` = '".$nodes[$i][0]."' ORDER BY `time` DESC LIMIT 0,1");
+	  $getNode = $connect->prepare("SELECT `id`, `time`, `loadavg`, `memory` FROM `data` WHERE `id` = '".$nodes[$i][0]."' ORDER BY `time` DESC LIMIT 0,1");
 	  
 	  $getNode->execute();
 	  
-	  $getNode->bind_result($id, $loadavg, $memory);
+	  $getNode->bind_result($id, $time, $loadavg, $memory);
 	  
 	  if ($getNode->error) {
 		  try {    
@@ -35,7 +35,19 @@ function getNode() {
 		  $memory = explode(",", $memory);
 		  $memory_use = round(100 * (($memory[0] - $memory[1]) / $memory[0]));
 		  
+		  $time = intval($time);
 		  
+		  if (time() - $time > $config['timeout']) {
+			  $status = "<span class=\"label label-important\">Offline</span>";
+		  } else {
+			  $status = "<span class=\"label label-success\">Online</span>";
+		  }
+		  
+		  echo "Cur time: ".time()."</br>";
+		  
+		  echo "Last response time: ".$time."</br>";
+		  
+		  echo "Time = ".time() - $time ."</br>";
 		  
 		  $output = "<tr id=\"".$id."\">";
 		  $output .= "<td>".$id."</td>";
@@ -45,7 +57,7 @@ function getNode() {
 		  $output .= "<td>".$loadavg."</td>";
 		  if ($config['wacpu']) { $output .= "<td></td>";} 
 			
-		  $output .= "<td class=\"status\"><span class=\"label label-success\">Online</span></td>";
+		  $output .= "<td class=\"status\">".$status."</td>";
 		  $output .= "<td class=\"actions\"><div class=\"btn-group\"><a href=\"#\" class=\"btn btn-small  toggle-row\"><i class=\"icon-plus\"></i></a> <a href=\"#\" class=\"btn btn-small \"><i class=\"icon-remove\"></i></a></div></td>";
 		  $output .= "</tr>";
 		  
