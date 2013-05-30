@@ -45,6 +45,8 @@ ifstat
 
 Git
 
+vmstat
+
 
 
 Web Installation
