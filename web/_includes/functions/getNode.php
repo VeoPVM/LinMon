@@ -43,12 +43,6 @@ function getNode() {
 			  $status = "<span class=\"label label-success\">Online</span>";
 		  }
 		  
-		  echo "Cur time: ".time()."</br>";
-		  
-		  echo "Last response time: ".$time."</br>";
-		  
-		  echo "Time = ".time() - $time ."</br>";
-		  
 		  $output = "<tr id=\"".$id."\">";
 		  $output .= "<td>".$id."</td>";
 		  $output .= "<td class=\"memory\"><div class=\"progress\">";
