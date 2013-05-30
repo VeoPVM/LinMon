@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors',1); 
- error_reporting(E_ALL);
+ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // Configuration
 include('_includes/config/config.php');
@@ -61,9 +61,10 @@ if (!file_exists("pages/".$page.".php")){
 </head>
 
 <body>
-<?php if ($_GET['p'] != "login") { 
-	include('_includes/template/navbar.php');
-}
+<?php 
+  if ($_GET['p'] != "login") { 
+	  include('_includes/template/navbar.php');
+  }
 ?>
 <div class="container">
   <div class="row">
