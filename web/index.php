@@ -69,8 +69,7 @@ if (!file_exists("pages/".$page.".php")){
 <div class="container">
   <div class="row">
     <?php 
-  //Include sidebar
-  include("_includes/template/sidebar.php");
+  
   
   //Now include the actual page from the pages folder
   

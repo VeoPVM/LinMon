@@ -1,5 +1,5 @@
 <!--Main Content-->
-<div class="span9">
+<div class="span12">
   <h1 class="page-title">LinMon Dashboard</h1>
   <div class="module module-table">
     <div class="module-header">
