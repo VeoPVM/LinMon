@@ -1,4 +1,6 @@
 <?php
+$start = microtime(true);
+
 ini_set('display_errors',1); 
  error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
@@ -76,6 +78,14 @@ if (!file_exists("pages/".$page.".php")){
   include("pages/".$page.".php");
   ?>
   </div>
+  
+  <div class="row">
+  <?php 
+$end = microtime(true);
+$end = round($end - $start, 2);
+echo "<p align=\"center\">Page generated in ".$end." Seconds</p>";
+?>
+  </div>
 </div>
 <!-- /container --> 
 
@@ -88,5 +98,8 @@ if (!file_exists("pages/".$page.".php")){
 
 <!-- Custom JS --> 
 <script src="_includes/js/custom.js"></script>
+
+
 </body>
 </html>
+
