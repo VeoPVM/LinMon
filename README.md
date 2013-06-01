@@ -97,6 +97,17 @@ You will need to edit the config file before starting LinMon.  To keep LinMon up
 
 
 
+0.1 Todo
+======
+
+Version Reporting
+
+Disk Usage Reporting
+
+Ability to load config file from a server
+
+
+
 Known Issues
 ======
 
