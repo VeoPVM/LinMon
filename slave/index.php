@@ -36,8 +36,6 @@ define("DBPASS", $config['dbpass']);
 define("DBHOST", $config['dbhost']);
 define("DBNAME", $config['dbname']);
 
-$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-
 echo "LinMon slave version " . getVersion("version") . " started \n\n";
 echo checkVersion();
 debug_collectionInterval(DEBUG, INTERVAL, LOG);
@@ -46,6 +44,8 @@ while (true) {
     debug_collectionInfoStart(DEBUG, LOG);
 
     $profile = profile_Start();
+	
+	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
     $loadavg = collect_loadAvg(DEBUG, LOG);
     $memory = collect_memory(DEBUG, LOG);
@@ -57,6 +57,8 @@ while (true) {
 	$cpu = collect_cpuUsage(DEBUG, LOG);
 
     db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu);
+	
+	$disconnect = db_close($connect);
 
     profile_End($profile, LOG);
 

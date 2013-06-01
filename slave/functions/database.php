@@ -26,4 +26,8 @@ function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime
 
     echo "[INFO_DATABASE] Data submitted to database\n";
 }
+
+function db_close($handle) {
+	mysqli_close($handle);
+}
 ?>
