@@ -85,6 +85,9 @@ Make a directory for LinMon.  The location of this doesn't really matter.
 Clone the repo into the LinMon folder
 ```git clone git://github.com/VeoPVM/LinMon.git .```
 
+Alternatively you can use this command to get a specific branch (replace 0.1 with the branch you want to clone)
+```git clone -b 0.1 git://github.com/VeoPVM/LinMon.git .```
+
 Give the start script execute permissions
 ```cd slave/ ; chmod +x start.sh```
 
