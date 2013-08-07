@@ -56,7 +56,7 @@ while (true) {
     $network = collect_networkUsage(DEBUG, LOG);
 	$cpu = collect_cpuUsage(DEBUG, LOG);
 
-    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu);
+    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, getVersion("version"));
 	
 	$disconnect = db_close($connect);
 
