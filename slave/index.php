@@ -29,6 +29,7 @@ define("SLAVEID", $config['id']);
 define("DEBUG", $config['debug']);
 define("LOG", $config['log']);
 define("INTERVAL", $config['updateinterval']);
+define("VERSION", getVersion("version"));
 
 // Database Settings
 define("DBUSER", $config['dbuser']);
@@ -36,7 +37,7 @@ define("DBPASS", $config['dbpass']);
 define("DBHOST", $config['dbhost']);
 define("DBNAME", $config['dbname']);
 
-echo "LinMon slave version " . getVersion("version") . " started \n\n";
+echo "LinMon slave version " . VERSION . " started \n\n";
 echo checkVersion();
 debug_collectionInterval(DEBUG, INTERVAL, LOG);
 
@@ -56,7 +57,7 @@ while (true) {
     $network = collect_networkUsage(DEBUG, LOG);
 	$cpu = collect_cpuUsage(DEBUG, LOG);
 
-    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, getVersion("version"));
+    db_insert($connect, SLAVEID, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, VERSION);
 	
 	$disconnect = db_close($connect);
 
