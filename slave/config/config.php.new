@@ -23,4 +23,7 @@ $config['dbhost'] = "mysql.yourserver.com";
 
 // MySQL database name.  String.
 $config['dbname'] = "linmon";
+
+// Enable cron mode.  Cron mode will only run once and then die.  Boolean.
+$config['cron'] = FALSE;
 ?>

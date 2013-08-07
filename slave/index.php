@@ -2,6 +2,7 @@
 set_time_limit(0);
 
 // Configuration
+include 'config/default.php';
 include 'config/config.php';
 
 // Version Functions
@@ -30,6 +31,7 @@ define("DEBUG", $config['debug']);
 define("LOG", $config['log']);
 define("INTERVAL", $config['updateinterval']);
 define("VERSION", getVersion("version"));
+define("CRON", $config['cron']);
 
 // Database Settings
 define("DBUSER", $config['dbuser']);
@@ -64,6 +66,11 @@ while (true) {
     profile_End($profile, LOG);
 
     debug_collectionInfoEnd(DEBUG, LOG);
+	
+	if (CRON === TRUE) {
+		die();
+	}
+	
     sleep(INTERVAL);
 }
 ?>
