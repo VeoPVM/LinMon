@@ -25,6 +25,11 @@ function debug($echo, $log) {
     }
 
     if ($log == TRUE) {
+    	if (!file_exists("logs/debug.log")) {
+    		$dbglog = fopen("logs/debug.log", "w");
+			fclose($dbglog);
+    	}
+		
         file_put_contents("logs/debug.log", date("r") . "  -  " . $echo, FILE_APPEND);
     }
 }
