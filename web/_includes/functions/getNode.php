@@ -15,11 +15,11 @@ function getNode() {
 	
 	for ($i = 0; $i <= ($getDistinctNodes->num_rows - 1); $i++) {	
 		
-	  $getNode = $connect->prepare("SELECT `id`, `time`, `loadavg`, `memory`, `cpu` FROM `data` WHERE `id` = '".$nodes[$i][0]."' ORDER BY `time` DESC LIMIT 0,1");
+	  $getNode = $connect->prepare("SELECT `id`, `time`, `loadavg`, `memory`, `network`,`cpu` FROM `data` WHERE `id` = '".$nodes[$i][0]."' ORDER BY `time` DESC LIMIT 0,1");
 	  
 	  $getNode->execute();
 	  
-	  $getNode->bind_result($id, $time, $loadavg, $memory, $cpu);
+	  $getNode->bind_result($id, $time, $loadavg, $memory ,$network ,$cpu);
 	  
 	  if ($getNode->error) {
 		  try {    
@@ -53,9 +53,12 @@ function getNode() {
 		  $output .= "<td>".$loadavg."</td>";
 		  $output .= "<td>".$cpu[0]."</td>";
 		  if ($config['wacpu']) { $output .= "<td>".$cpu[1]."</td>";} 
-			
+		  $output .= "<td>".$network."</td>";
+		  $output .= "<td>".$version."</td>";
 		  $output .= "<td class=\"status\">".$status."</td>";
-		  /*$output .= "<td class=\"actions\"><div class=\"btn-group\"><a href=\"#\" class=\"btn btn-small  toggle-row\"><i class=\"icon-plus\"></i></a> <a href=\"#\" class=\"btn btn-small \"><i class=\"icon-remove\"></i></a></div></td>";*/
+		  if ($config['delete']) { $output .= "<td class=\"actions\"><a href=\"#\" class=\"btn btn-small \"><i class=\"icon-remove\"></i></a></div></td>"; }
+		  
+		  
 		  $output .= "</tr>";
 		  
 		  echo $output;
