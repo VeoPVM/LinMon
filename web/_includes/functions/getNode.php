@@ -19,16 +19,8 @@ function getNode() {
 	  
 	  $getNode->execute();
 	  
-	  $getNode->bind_result($id, $time, $loadavg, $memory ,$network ,$cpu ,$version);
-	  
-	  if ($getNode->error) {
-		  try {    
-			  throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
-		  } catch(Exception $e ) {
-			  echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
-			  echo nl2br($e->getTraceAsString());
-		  }
-	  }
+	  $getNode->bind_result($id, $time, $loadavg, $memory ,$network ,$cpu ,$version);  
+
   
 	  
 	  while($getNode->fetch()){
