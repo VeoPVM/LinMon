@@ -26,7 +26,6 @@ function debug($echo, $log) {
 
     if ($log == TRUE) {
     	if (!file_exists("logs/debug.log")) {
-    		mkdir("logs");
     		$dbglog = fopen("logs/debug.log", "w");
 			fclose($dbglog);
     	}
