@@ -57,7 +57,7 @@ function getNode() {
 		  $output .= "<td>".$cpu[0]."</td>";
 		  if ($config['wacpu']) { $output .= "<td>".$cpu[1]."</td>";} 
 		  $output .= "<td>".$network."</td>";
-		  $output .= "<td>".$version."</td>";
+		  $output .= "<td>".checkVersion($version)."</td>";
 		  $output .= "<td class=\"status\">".$status."</td>";
 		  if ($config['delete']) { $output .= "<td class=\"actions\"><a href=\"#\" class=\"btn btn-small \"><i class=\"icon-remove\"></i></a></div></td>"; }
 		  
