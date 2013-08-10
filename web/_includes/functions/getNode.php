@@ -44,6 +44,7 @@ function getNode() {
 		  }
 		  
 		  $cpu = explode(",", $cpu);
+		  $loadavg = str_replace(",", ", ", $loadavg);
 		  $network = explode(",", $network);
 		  $network = "<strong>".$network[0]."</strong> KBytes/s DL, <strong>".$network[1]."</strong> KBytes/s UL";
 		  
