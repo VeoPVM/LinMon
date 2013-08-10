@@ -15,11 +15,11 @@ function getNode() {
 	
 	for ($i = 0; $i <= ($getDistinctNodes->num_rows - 1); $i++) {	
 		
-	  $getNode = $connect->prepare("SELECT `id`, `time`, `loadavg`, `memory`, `network`,`cpu` FROM `data` WHERE `id` = '".$nodes[$i][0]."' ORDER BY `time` DESC LIMIT 0,1");
+	  $getNode = $connect->prepare("SELECT `id`, `time`, `loadavg`, `memory`, `network`,`cpu`,`version` FROM `data` WHERE `id` = '".$nodes[$i][0]."' ORDER BY `time` DESC LIMIT 0,1");
 	  
 	  $getNode->execute();
 	  
-	  $getNode->bind_result($id, $time, $loadavg, $memory ,$network ,$cpu);
+	  $getNode->bind_result($id, $time, $loadavg, $memory ,$network ,$cpu ,$version);
 	  
 	  if ($getNode->error) {
 		  try {    
