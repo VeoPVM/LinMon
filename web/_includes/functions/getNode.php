@@ -45,7 +45,7 @@ function getNode() {
 		  
 		  $cpu = explode(",", $cpu);
 		  $network = explode(",", $network);
-		  $network = $network[0]."KBytes/s DL, ".$network[1]." KBytes/s UL";
+		  $network = "<strong>".$network[0]."</strong> KBytes/s DL, <strong>".$network[1]."</strong> KBytes/s UL";
 		  
 		  $output = "<tr id=\"".$id."\">";
 		  $output .= "<td>".$id."</td>";
