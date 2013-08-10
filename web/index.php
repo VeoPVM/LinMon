@@ -10,8 +10,11 @@ include('_includes/config/config.php');
 // Database Functions
 include('_includes/functions/database.php');
 
-//Getting Data
+// Getting Data
 include('_includes/functions/getNode.php');
+
+// Version Checking
+include('_includes/functions/checkVersion.php');
 
 // Database Settings
 define("DBUSER", $config['dbuser']);

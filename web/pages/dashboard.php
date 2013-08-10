@@ -14,8 +14,10 @@
             <th>Load Average</th>
             <th>CPU</th>
             <?php if ($config['wacpu']) { echo "<th>WA CPU</th>"; } ?>
+            <th>Network</th>
+            <th>Version</th>
             <th>Status</th>
-            <!--<th width="68px">Actions</th>-->
+            <?php if ($config['delete']) { echo "<th>Actions</th>"; } ?>
           </tr>
         </thead>
         <tbody>

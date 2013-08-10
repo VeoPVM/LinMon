@@ -9,14 +9,14 @@ function db_connect($host, $user, $pass, $dbname) {
     return $connect;
 }
 
-function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu) {
+function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version) {
     $time = time();
 
-    if (!$stmt = $connect -> prepare("INSERT INTO data (time, id, loadavg, memory, kernel, hostname, uptime, users, network, cpu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+    if (!$stmt = $connect -> prepare("INSERT INTO data (time, id, loadavg, memory, kernel, hostname, uptime, users, network, cpu, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
         echo "MySQL Error!  Error description: Can't prepare!";
     }
 
-    $stmt -> bind_param('isssssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu);
+    $stmt -> bind_param('issssssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version);
 
     $stmt -> execute();
 
