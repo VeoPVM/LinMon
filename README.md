@@ -5,21 +5,10 @@ LinMon is a server monitoring tool designed to be used on Linux coded in PHP.  T
 
 
 
-The Plan
+Components
 ======
 
-The plan is that LinMon will have two components:
-
-Web Interface - This is where you will be able to view all of the collected statistics.  You will be able to add new users so that other SysAdmins can view the server statistics.
-
-Slave Servers - Each server will need to run the slave software.  This will be available in two modes: Daemon (running all the time) and Cron (which you can run as often as you like).
-
-
-
-Current Release 0.1 Plan
-======
-
-The plan for 0.1 is to get a stable release out that is usable and useful.  After 0.1, we will add more features, and do a ton of code re-factoring.  We also intend to make LinMon fully object oriented in future releases.
+There are two components to LinMon - the web interface, and the slave.  The web interface displays all of the collected statistics, while the slave collects the statistics.  The slave can either run as a daemon, or in cron mode.
 
 
 
@@ -79,14 +68,17 @@ Slave Installation
 
 Setting up the slave is very similar to setting up the web interface.
 
+Install the required packages.  On a debian based system (including ubuntu), it would look like this:
+```apt-get -y install php5 php5-cli php5-mysql ifstat git-core```
+
 Make a directory for LinMon.  The location of this doesn't really matter.
 ```cd /home ; mkdir LinMon ; cd LinMon```
 
 Clone the repo into the LinMon folder
 ```git clone git://github.com/VeoPVM/LinMon.git .```
 
-Alternatively you can use this command to get a specific branch (replace 0.1 with the branch you want to clone)
-```git clone -b 0.1 git://github.com/VeoPVM/LinMon.git .```
+Alternatively you can use this command to get a specific branch (replace dev with the branch you want to clone)
+```git clone -b dev git://github.com/VeoPVM/LinMon.git .```
 
 Give the start script execute permissions
 ```cd slave/ ; chmod +x start.sh```
@@ -97,6 +89,9 @@ Start LinMon
 
 You will need to edit the config file before starting LinMon.  To keep LinMon up to date you can run this command when in the main LinMon folder:
 ```git pull```
+
+Or this command if you want to pull the dev branch:
+```git pull origin dev```
 
 
 
