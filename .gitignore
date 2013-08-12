@@ -8,3 +8,4 @@ web/_includes/config/config.php
 db_viewer/
 linmon.pid
 nohup.out
+*.prefs
