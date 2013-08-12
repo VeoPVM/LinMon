@@ -6,8 +6,8 @@ include 'config/default.php';
 include 'config/config.php';
 
 // Version Functions
-include 'functions/getVersion.php';
 include 'functions/checkVersion.class.php';
+$version = new version();
 
 // Debugging Functions
 include 'functions/debug.php';
@@ -30,7 +30,7 @@ define("SLAVEID", $config['id']);
 define("DEBUG", $config['debug']);
 define("LOG", $config['log']);
 define("INTERVAL", $config['updateinterval']);
-define("VERSION", getVersion("version"));
+define("VERSION", $version->getVersion("version"));
 define("CRON", $config['cron']);
 
 // Database Settings
@@ -40,8 +40,9 @@ define("DBHOST", $config['dbhost']);
 define("DBNAME", $config['dbname']);
 
 echo "LinMon slave version " . VERSION . " started \n\n";
-$version = new version();
+
 $version->checkVersion();
+
 debug_collectionInterval(DEBUG, INTERVAL, LOG);
 
 while (true) {
