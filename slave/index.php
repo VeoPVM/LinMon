@@ -24,7 +24,8 @@ include 'functions/cpu.php';
 include 'functions/database.php';
 
 // Profiling Functions
-include 'functions/profiling.php';
+include 'functions/profiling.class.php';
+$profile = new profile();
 
 // LinMon Settings
 define("SLAVEID", $config['id']);
@@ -49,7 +50,7 @@ $debugging->collectionInterval(DEBUG, INTERVAL, LOG);
 while (true) {
     $debugging->collectionInfoStart(DEBUG, LOG);
 
-    $profile = profile_Start();
+    $profile->startProfile();
 	
 	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
@@ -66,7 +67,7 @@ while (true) {
 	
 	$disconnect = db_close($connect);
 
-    profile_End($profile, LOG);
+    $profile->endProfile($profile, LOG);
 
     $debugging->collectionInfoEnd(DEBUG, LOG);
 	
