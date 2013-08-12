@@ -12,11 +12,11 @@ function db_connect($host, $user, $pass, $dbname) {
 function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version) {
 	$time = time();
 
-	if (!$stmt = $connect->prepare("UPDATE data SET time = '?', id = '?', loadavg = '?', memory = '?', kernel = '?', hostname = '?', uptime = '?', users = '?', network = '?', cpu = '?', version = '?' WHERE id = '?'")) {
+	if (!$stmt = $connect->prepare("UPDATE data SET time = '?', id = '?', loadavg = '?', memory = '?', kernel = '?', hostname = '?', uptime = '?', users = '?', network = '?', cpu = '?', version = '?' WHERE id = '" . $id . "'")) {
 		echo "MySQL Error!  Error description: Can't prepare!";
 	} else {
 
-		$stmt->bind_param('isssssssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version, $id);
+		$stmt->bind_param('issssssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version);
 
 		$stmt->execute();
 
