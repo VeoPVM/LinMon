@@ -14,11 +14,6 @@ $config['dbname'] = "linmon";
 // Show WA CPU Column. Boolean.
 $config['wacpu'] = false;
 
-
-// Show WA CPU Column. Boolean.
-$config['wacpu'] = true;
-
-
 // Timeout for status check. Integer, sconds. 
 $config['timeout'] = 300;
 ?>
