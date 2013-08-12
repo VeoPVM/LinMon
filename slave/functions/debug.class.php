@@ -30,7 +30,7 @@ class debugging {
             if (!file_exists("logs/debug.log")) {
                 mkdir("logs");
                 $this->dbglog = fopen("logs/debug.log", "w");
-                fclose($dbglog);
+                fclose($this->$dbglog);
             }
 
             file_put_contents("logs/debug.log", date("r") . "  -  " . $echo, FILE_APPEND);
