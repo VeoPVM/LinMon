@@ -7,7 +7,7 @@ function collect_loadAvg($debug, $log) {
     if ($debug == TRUE) {
         $avg = explode(",", $avg);
         $avg = $avg[0] . "," . $avg[1] . "," . $avg[2];
-        debug("[DEBUG_COLLECT] Load Avg: " . $avg . "\n", $log);
+        debugging::debug("[DEBUG_COLLECT] Load Avg: " . $avg . "\n", $log);
     }
 
     return $avg;

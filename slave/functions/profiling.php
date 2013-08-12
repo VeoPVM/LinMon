@@ -10,6 +10,6 @@ function profile_End($start, $log) {
     $end = microtime(true);
     $end = $end - $start;
 
-    debug("[INFO_PROFILE] Profile time: ".round($end, 2)." seconds\n", $log);
+    debugging::debug("[INFO_PROFILE] Profile time: ".round($end, 2)." seconds\n", $log);
 }
 ?>

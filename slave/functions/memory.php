@@ -25,8 +25,8 @@ function collect_memory($debug, $log) {
     }
 
     if ($debug == TRUE) {
-        debug("[DEBUG_COLLECT] Memory collected\n", $log);
-        debug("[DEBUG_COLLECT] Memory values: " . $return . "\n", $log);
+        debugging::debug("[DEBUG_COLLECT] Memory collected\n", $log);
+        debugging::debug("[DEBUG_COLLECT] Memory values: " . $return . "\n", $log);
     }
 
     return $return;

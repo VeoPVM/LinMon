@@ -10,7 +10,8 @@ include 'functions/checkVersion.class.php';
 $version = new version();
 
 // Debugging Functions
-include 'functions/debug.php';
+include 'functions/debug.class.php';
+$debugging = new debugging();
 
 // Stats Functions
 include 'functions/loadAvg.php';
@@ -43,10 +44,10 @@ echo "LinMon slave version " . VERSION . " started \n\n";
 
 $version->checkVersion();
 
-debug_collectionInterval(DEBUG, INTERVAL, LOG);
+$debugging->collectionInterval(DEBUG, INTERVAL, LOG);
 
 while (true) {
-    debug_collectionInfoStart(DEBUG, LOG);
+    $debugging->collectionInfoStart(DEBUG, LOG);
 
     $profile = profile_Start();
 	
@@ -67,7 +68,7 @@ while (true) {
 
     profile_End($profile, LOG);
 
-    debug_collectionInfoEnd(DEBUG, LOG);
+    $debugging->collectionInfoEnd(DEBUG, LOG);
 	
 	if (CRON === TRUE) {
 		die();

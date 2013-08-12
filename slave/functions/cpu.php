@@ -20,7 +20,7 @@ function collect_cpuUsage($debug, $log) {
 	$wa = $cpuusage[15];
 
     if ($debug == TRUE) {
-        debug("[DEBUG_COLLECT] CPU Usage: ".$cpu."% WA CPU Usage: ".$wa."%\n", $log);
+        debugging::debug("[DEBUG_COLLECT] CPU Usage: ".$cpu."% WA CPU Usage: ".$wa."%\n", $log);
     }
 	
     $return = $cpu.",".$wa;
