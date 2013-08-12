@@ -21,7 +21,8 @@ $memory = new memory();
 include 'functions/misc.php';
 include 'functions/network.class.php';
 $network = new network();
-include 'functions/cpu.php';
+include 'functions/cpu.class.php';
+$cpu = new cpu();
 
 // Database Functions
 include 'functions/database.php';
@@ -64,9 +65,9 @@ while (true) {
     $uptime = collect_uptime(DEBUG, LOG);
     $users = collect_users(DEBUG, LOG);
     $networkusage = $network->collect_networkUsage(DEBUG, LOG);
-	$cpu = collect_cpuUsage(DEBUG, LOG);
+	$cpuusage = $cpu->collect_cpuUsage(DEBUG, LOG);
 
-    db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpu, VERSION);
+    db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
 	
 	$disconnect = db_close($connect);
 
