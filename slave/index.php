@@ -14,7 +14,8 @@ include 'functions/debug.class.php';
 $debugging = new debugging();
 
 // Stats Functions
-include 'functions/loadAvg.php';
+include 'functions/loadAvg.class.php';
+$loadavg = new loadAvg();
 include 'functions/memory.class.php';
 $memory = new memory();
 include 'functions/misc.php';
@@ -56,7 +57,7 @@ while (true) {
 	
 	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
-    $loadavg = collect_loadAvg(DEBUG, LOG);
+    $loadavgstats = $loadavg->collect_loadAvg(DEBUG, LOG);
     $memoryusage = $memory->collect_memory(DEBUG, LOG);
     $kernel = collect_kernel(DEBUG, LOG);
     $hostname = collect_hostname(DEBUG, LOG);
@@ -65,7 +66,7 @@ while (true) {
     $networkusage = $network->collect_networkUsage(DEBUG, LOG);
 	$cpu = collect_cpuUsage(DEBUG, LOG);
 
-    db_insert($connect, SLAVEID, $loadavg, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpu, VERSION);
+    db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpu, VERSION);
 	
 	$disconnect = db_close($connect);
 
