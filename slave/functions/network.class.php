@@ -21,7 +21,7 @@ class network {
 
         $this->return = $this->network[0] . ',' . $this->network[1];
 
-        return $return;
+        return $this->return;
 
     }
 
