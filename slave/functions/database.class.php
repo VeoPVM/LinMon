@@ -15,7 +15,7 @@ class database {
     public function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version) {
         $this->time = time();
 
-        if (!$this->stmt = $this->connect->prepare("INSERT INTO data (time, id, loadavg, memory, kernel, hostname, uptime, users, network, cpu, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+        if (!$this->stmt = $connect->prepare("INSERT INTO data (time, id, loadavg, memory, kernel, hostname, uptime, users, network, cpu, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
             echo "MySQL Error!  Error description: Can't prepare!";
         } else {
 
