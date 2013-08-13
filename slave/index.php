@@ -26,7 +26,8 @@ include 'functions/cpu.class.php';
 $cpu = new cpu();
 
 // Database Functions
-include 'functions/database.php';
+include 'functions/database.class.php';
+$database = new database();
 
 // Profiling Functions
 include 'functions/profiling.class.php';
@@ -57,7 +58,7 @@ while (true) {
 
     $profile->startProfile();
 	
-	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+	$connect = $database->db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
     $loadavgstats = $loadavg->collect_loadAvg();
     $memoryusage = $memory->collect_memory();
@@ -68,9 +69,9 @@ while (true) {
     $networkusage = $network->collect_networkUsage();
 	$cpuusage = $cpu->collect_cpuUsage();
 
-    db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
+    $database->db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
 	
-	$disconnect = db_close($connect);
+	$database->db_close($connect);
 
     $profile->endProfile($profile);
 
