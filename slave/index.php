@@ -58,7 +58,7 @@ while (true) {
 
     $profile->startProfile();
 	
-	$connect = $database->db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+	$database->db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
     $loadavgstats = $loadavg->collect_loadAvg();
     $memoryusage = $memory->collect_memory();
@@ -69,7 +69,7 @@ while (true) {
     $networkusage = $network->collect_networkUsage();
 	$cpuusage = $cpu->collect_cpuUsage();
 
-    $database->db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
+    $database->db_insert(SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
 	
 	$database->db_close();
 
