@@ -5,7 +5,7 @@ function getNode() {
 	
 	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 	
-	$getDistinctNodes = $connect->query("SELECT DISTINCT(id) FROM `data`");
+	$getDistinctNodes = $connect->query("SELECT DISTINCT(id) FROM `data` ORDER BY `id`");
 	
 	$nodes = array();
 	while($node = $getDistinctNodes->fetch_array()){
