@@ -3,7 +3,7 @@
 class database {
 
     public function db_connect($host, $user, $pass, $dbname) {
-        $connect = new mysqli($host, $user, $pass, $dbname);
+        $this->connect = new mysqli($host, $user, $pass, $dbname);
 
         if ($this->connect->connect_errno) {
             echo "MySQL Error!  Error number: " . $this->connect->connect_errno;
