@@ -2,27 +2,27 @@
 
 class misc {
 
-    public function collect_kernel($debug, $log) {
+    public function collect_kernel() {
         $this->kernel = exec('uname -r') . " " . exec('uname -v');
 
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Kernel: " . $this->kernel . "\n", $log);
+        if (DEBUG == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Kernel: " . $this->kernel . "\n", LOG);
         }
 
         return $this->kernel;
     }
 
-    public function collect_hostname($debug, $log) {
+    public function collect_hostname() {
         $this->hostname = exec('uname -n');
 
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Hostname: " . $this->hostname . "\n", $log);
+        if (DEBUG == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Hostname: " . $this->hostname . "\n", LOG);
         }
 
         return $this->hostname;
     }
 
-    public function collect_uptime($debug, $log) {
+    public function collect_uptime() {
         $this->uptime = shell_exec('uptime');
 
         // Check if up more than 24 hours
@@ -40,8 +40,8 @@ class misc {
                 $this->day = "days";
             }
 
-            if ($debug == TRUE) {
-                debugging::debug("[DEBUG_COLLECT] Uptime: " . $this->uptimearr[0] . " " . $this->day . " " . $this->uptimearr[1] . " hours " . $this->uptimearr[2] . " minutes\n", $log);
+            if (DEBUG == TRUE) {
+                debugging::debug("[DEBUG_COLLECT] Uptime: " . $this->uptimearr[0] . " " . $this->day . " " . $this->uptimearr[1] . " hours " . $this->uptimearr[2] . " minutes\n", LOG);
             }
         } else {
             $this->uptime = explode(' up ', $this->uptime);
@@ -65,8 +65,8 @@ class misc {
 
             $this->uptime = $this->uptime[0] . "," . $this->uptime[1];
 
-            if ($debug == TRUE) {
-                debugging::debug("[DEBUG_COLLECT] Uptime: " . $this->hours . " " . $this->hourperiod . " " . $this->mins . " " . $this->minperiod . "\n", $log);
+            if (DEBUG == TRUE) {
+                debugging::debug("[DEBUG_COLLECT] Uptime: " . $this->hours . " " . $this->hourperiod . " " . $this->mins . " " . $this->minperiod . "\n", LOG);
             }
 
         }
@@ -74,7 +74,7 @@ class misc {
         return $this->uptime;
     }
 
-    public function collect_users($debug, $log) {
+    public function collect_users() {
         exec('who', $this->who);
 
         foreach ($this->who as $key => $value) {
@@ -90,8 +90,8 @@ class misc {
             $this->returnusers = "Nobody is logged in";
         }
 
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Users: " . str_replace(",", ", ", $this->returnusers) . "\n", $log);
+        if (DEBUG == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Users: " . str_replace(",", ", ", $this->returnusers) . "\n", LOG);
         }
 
         return $this->returnusers;
