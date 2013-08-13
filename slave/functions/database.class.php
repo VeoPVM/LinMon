@@ -18,7 +18,7 @@ class database {
             echo "MySQL Error!  Error description: Can't prepare!";
         } else {
 
-            $this->stmt->bind_param('issssssssss', $time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version);
+            $this->stmt->bind_param('issssssssss', $this->time, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version);
 
             $this->stmt->execute();
 
