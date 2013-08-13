@@ -19,6 +19,7 @@ $loadavg = new loadAvg();
 include 'functions/memory.class.php';
 $memory = new memory();
 include 'functions/misc.php';
+$misc = new misc();
 include 'functions/network.class.php';
 $network = new network();
 include 'functions/cpu.class.php';
@@ -60,10 +61,10 @@ while (true) {
 
     $loadavgstats = $loadavg->collect_loadAvg();
     $memoryusage = $memory->collect_memory();
-    $kernel = collect_kernel();
-    $hostname = collect_hostname();
-    $uptime = collect_uptime();
-    $users = collect_users();
+    $kernel = $misc->collect_kernel();
+    $hostname = $misc->collect_hostname();
+    $uptime = $misc->collect_uptime();
+    $users = $misc->collect_users();
     $networkusage = $network->collect_networkUsage();
 	$cpuusage = $cpu->collect_cpuUsage();
 

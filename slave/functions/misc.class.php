@@ -2,7 +2,7 @@
 
 class misc {
 
-    function collect_kernel($debug, $log) {
+    public function collect_kernel($debug, $log) {
         $this->kernel = exec('uname -r') . " " . exec('uname -v');
 
         if ($debug == TRUE) {
@@ -12,7 +12,7 @@ class misc {
         return $this->kernel;
     }
 
-    function collect_hostname($debug, $log) {
+    public function collect_hostname($debug, $log) {
         $this->hostname = exec('uname -n');
 
         if ($debug == TRUE) {
@@ -22,7 +22,7 @@ class misc {
         return $this->hostname;
     }
 
-    function collect_uptime($debug, $log) {
+    public function collect_uptime($debug, $log) {
         $this->uptime = shell_exec('uptime');
 
         // Check if up more than 24 hours
@@ -74,7 +74,7 @@ class misc {
         return $this->uptime;
     }
 
-    function collect_users($debug, $log) {
+    public function collect_users($debug, $log) {
         exec('who', $this->who);
 
         foreach ($this->who as $key => $value) {
