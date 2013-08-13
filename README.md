@@ -106,6 +106,8 @@ Or this command if you want to pull the dev branch:
 
 - New Feature (in progress): Monitor disk usage
 
+- Improvement: Massively improved performance on the web interface for large databases
+
 
 
 Known Issues
