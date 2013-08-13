@@ -32,7 +32,7 @@ class database {
     }
 
     public function db_close() {
-        $this->connect->mysqli_close();
+        $this->connect->close();
     }
 
 }
