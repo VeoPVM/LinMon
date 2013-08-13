@@ -2,31 +2,31 @@
 
 class debugging {
 
-    public function collectionInfoStart($debug, $log) {
-        if ($debug == TRUE) {
-            $this->debug("[DEBUG] Collecting data\n", $log);
+    public function collectionInfoStart() {
+        if (DEBUG == TRUE) {
+            $this->debug("[DEBUG] Collecting data\n", LOG);
         }
     }
 
-    public function collectionInfoEnd($debug, $log) {
-        if ($debug == TRUE) {
-            $this->debug("[DEBUG] Finished collecting data\n\n", $log);
+    public function collectionInfoEnd() {
+        if (DEBUG == TRUE) {
+            $this->debug("[DEBUG] Finished collecting data\n\n", LOG);
         }
     }
 
-    public function collectionInterval($debug, $interval, $log) {
-        if ($debug == TRUE) {
-            $this->debug("[DEBUG] Collecting data every " . $interval . " seconds\n\n", $log);
+    public function collectionInterval($interval) {
+        if (DEBUG == TRUE) {
+            $this->debug("[DEBUG] Collecting data every " . $interval . " seconds\n\n", LOG);
         }
     }
 
-    public function debug($echo, $log) {
+    public function debug($echo) {
 
         if ($echo != "" && $echo !== NULL) {
             echo $echo;
         }
 
-        if ($log == TRUE) {
+        if (LOG == TRUE) {
             if (!file_exists("logs/debug.log")) {
                 mkdir("logs");
                 $this->dbglog = fopen("logs/debug.log", "w");

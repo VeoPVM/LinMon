@@ -2,7 +2,7 @@
 
 class network {
 
-    public function collect_networkUsage($debug, $log) {
+    public function collect_networkUsage() {
         $this->usage = trim(exec('ifstat -S 0.1 1'));
 
         $this->usage = explode(" ", $this->usage);
@@ -15,8 +15,8 @@ class network {
             }
         }
 
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Network Usage collected: IN: " . $this->network[0] . " KBytes/s | OUT: " . $this->network[1] . " KBytes/s\n", $log);
+        if (DEBUG == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Network Usage collected: IN: " . $this->network[0] . " KBytes/s | OUT: " . $this->network[1] . " KBytes/s\n", LOG);
         }
 
         $this->return = $this->network[0] . ',' . $this->network[1];

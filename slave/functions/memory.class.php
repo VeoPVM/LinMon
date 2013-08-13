@@ -2,7 +2,7 @@
 
 class memory {
 
-    public function collect_memory($debug, $log) {
+    public function collect_memory() {
         $this->return = "";
 
         $this->memorystr = file_get_contents('/proc/meminfo');
@@ -26,9 +26,9 @@ class memory {
             }
         }
 
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Memory collected\n", $log);
-            debugging::debug("[DEBUG_COLLECT] Memory values: " . $this->return . "\n", $log);
+        if (DEBUG == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Memory collected\n", LOG);
+            debugging::debug("[DEBUG_COLLECT] Memory values: " . $this->return . "\n", LOG);
         }
 
         return $this->return;

@@ -52,28 +52,28 @@ $version->checkVersion();
 $debugging->collectionInterval(DEBUG, INTERVAL, LOG);
 
 while (true) {
-    $debugging->collectionInfoStart(DEBUG, LOG);
+    $debugging->collectionInfoStart();
 
     $profile->startProfile();
 	
 	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
-    $loadavgstats = $loadavg->collect_loadAvg(DEBUG, LOG);
-    $memoryusage = $memory->collect_memory(DEBUG, LOG);
-    $kernel = collect_kernel(DEBUG, LOG);
-    $hostname = collect_hostname(DEBUG, LOG);
-    $uptime = collect_uptime(DEBUG, LOG);
-    $users = collect_users(DEBUG, LOG);
-    $networkusage = $network->collect_networkUsage(DEBUG, LOG);
-	$cpuusage = $cpu->collect_cpuUsage(DEBUG, LOG);
+    $loadavgstats = $loadavg->collect_loadAvg();
+    $memoryusage = $memory->collect_memory();
+    $kernel = collect_kernel();
+    $hostname = collect_hostname();
+    $uptime = collect_uptime();
+    $users = collect_users();
+    $networkusage = $network->collect_networkUsage();
+	$cpuusage = $cpu->collect_cpuUsage();
 
     db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
 	
 	$disconnect = db_close($connect);
 
-    $profile->endProfile($profile, LOG);
+    $profile->endProfile($profile);
 
-    $debugging->collectionInfoEnd(DEBUG, LOG);
+    $debugging->collectionInfoEnd();
 	
 	if (CRON === TRUE) {
 		die();

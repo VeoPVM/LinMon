@@ -2,7 +2,7 @@
 
 class cpu {
 
-    function collect_cpuUsage($debug, $log) {
+    function collect_cpuUsage() {
         $this->usage = explode(" ", exec('vmstat 2 2'));
 
         $this->cpuusage = array();
@@ -21,8 +21,8 @@ class cpu {
         // Get WA CPU usage
         $this->wa = $this->cpuusage[15];
 
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] CPU Usage: " . $this->cpu . "% WA CPU Usage: " . $this->wa . "%\n", $log);
+        if (DEBUG == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] CPU Usage: " . $this->cpu . "% WA CPU Usage: " . $this->wa . "%\n", LOG);
         }
 
         $this->return = $this->cpu . "," . $this->wa;
