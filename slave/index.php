@@ -18,7 +18,7 @@ include 'functions/loadAvg.class.php';
 $loadavg = new loadAvg();
 include 'functions/memory.class.php';
 $memory = new memory();
-include 'functions/misc.php';
+include 'functions/misc.class.php';
 $misc = new misc();
 include 'functions/network.class.php';
 $network = new network();
