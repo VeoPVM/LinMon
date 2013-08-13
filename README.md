@@ -95,12 +95,16 @@ Or this command if you want to pull the dev branch:
 
 
 
-0.1 Todo
+0.2 Changelog
 ======
 
-Disk Usage Reporting
+- Improvement: Slave (is currently being) refactored to use object oriented code rather than procedural code.
 
-Ability to load config file from a server
+- Bug Fix: The Slave will no longer crash if there is a database issue
+
+- Bug Fix: Navbar now links to correct page
+
+- New Feature (in progress): Monitor disk usage
 
 
 
