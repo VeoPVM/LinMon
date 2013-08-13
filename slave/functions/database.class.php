@@ -9,7 +9,7 @@ class database {
             echo "MySQL Error!  Error number: " . $this->connect->connect_errno;
         }
 
-        return $connect;
+        return $this->connect;
     }
 
     public function db_insert($connect, $id, $loadavg, $memory, $kernel, $hostname, $uptime, $users, $network, $cpu, $version) {
