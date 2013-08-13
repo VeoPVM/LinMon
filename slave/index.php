@@ -71,7 +71,7 @@ while (true) {
 
     $database->db_insert($connect, SLAVEID, $loadavgstats, $memoryusage, $kernel, $hostname, $uptime, $users, $networkusage, $cpuusage, VERSION);
 	
-	$database->db_close($connect);
+	$database->db_close();
 
     $profile->endProfile($profile);
 
