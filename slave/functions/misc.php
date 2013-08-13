@@ -1,98 +1,102 @@
 <?php
 
-function collect_kernel($debug, $log) {
-    $kernel = exec('uname -r') . " " . exec('uname -v');
+class misc {
 
-    if ($debug == TRUE) {
-        debugging::debug("[DEBUG_COLLECT] Kernel: " . $kernel . "\n", $log);
+    function collect_kernel($debug, $log) {
+        $this->kernel = exec('uname -r') . " " . exec('uname -v');
+
+        if ($debug == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Kernel: " . $this->kernel . "\n", $log);
+        }
+
+        return $this->kernel;
     }
 
-    return $kernel;
-}
+    function collect_hostname($debug, $log) {
+        $this->hostname = exec('uname -n');
 
-function collect_hostname($debug, $log) {
-    $hostname = exec('uname -n');
+        if ($debug == TRUE) {
+            debugging::debug("[DEBUG_COLLECT] Hostname: " . $this->hostname . "\n", $log);
+        }
 
-    if ($debug == TRUE) {
-        debugging::debug("[DEBUG_COLLECT] Hostname: " . $hostname . "\n", $log);
+        return $this->hostname;
     }
 
-    return $hostname;
-}
+    function collect_uptime($debug, $log) {
+        $this->uptime = shell_exec('uptime');
 
-function collect_uptime($debug, $log) {
-    $uptime = shell_exec('uptime');
+        // Check if up more than 24 hours
+        if (strpos($this->uptime, 'day') !== FALSE) {
+            $this->uptime = explode(' up ', $this->uptime);
+            $this->uptime = explode(',', $this->uptime[1]);
+            $this->uptimehourmin = explode(":", $this->uptime[1]);
+            $this->uptime = str_replace("days", "", $this->uptime[0]);
+            $this->uptime = $this->uptime . ',' . $this->uptimehourmin[0] . ',' . $this->uptimehourmin[1];
+            $this->uptimearr = explode(",", $this->uptime);
 
-    // Check if up more than 24 hours
-    if (strpos($uptime, 'day') !== FALSE) {
-        $uptime = explode(' up ', $uptime);
-        $uptime = explode(',', $uptime[1]);
-        $uptimehourmin = explode(":", $uptime[1]);
-        $uptime = str_replace("days", "", $uptime[0]);
-        $uptime = $uptime . ',' . $uptimehourmin[0] . ',' . $uptimehourmin[1];
-        $uptimearr = explode(",", $uptime);
+            if ($this->uptime == "1") {
+                $this->day = "day";
+            } else {
+                $this->day = "days";
+            }
 
-        if ($uptime == "1") {
-            $day = "day";
+            if ($debug == TRUE) {
+                debugging::debug("[DEBUG_COLLECT] Uptime: " . $this->uptimearr[0] . " " . $this->day . " " . $this->uptimearr[1] . " hours " . $this->uptimearr[2] . " minutes\n", $log);
+            }
         } else {
-            $day = "days";
+            $this->uptime = explode(' up ', $this->uptime);
+            $this->uptime = explode(',', $this->uptime[1]);
+            $this->uptime = explode(':', $this->uptime[0]);
+
+            if ($this->uptime[0] < 2) {
+                $this->hourperiod = 'hour';
+            } else {
+                $this->hourperiod = 'hours';
+            }
+
+            if ($this->uptime[1] == 1) {
+                $this->minperiod = 'minute';
+            } else {
+                $this->minperiod = 'minutes';
+            }
+
+            $this->hours = $this->uptime[0];
+            $this->mins = $this->uptime[1];
+
+            $this->uptime = $this->uptime[0] . "," . $this->uptime[1];
+
+            if ($debug == TRUE) {
+                debugging::debug("[DEBUG_COLLECT] Uptime: " . $this->hours . " " . $this->hourperiod . " " . $this->mins . " " . $this->minperiod . "\n", $log);
+            }
+
+        }
+
+        return $this->uptime;
+    }
+
+    function collect_users($debug, $log) {
+        exec('who', $this->who);
+
+        foreach ($this->who as $key => $value) {
+            $this->user = explode(" ", $value);
+            $this->users[$key] = $this->user[0];
+        }
+
+        foreach ($this->users as $key => $value) {
+            $this->returnusers = $this->users[$key] . ",";
+        }
+
+        if ($this->returnusers == "" || $this->returnusers == NULL) {
+            $this->returnusers = "Nobody is logged in";
         }
 
         if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Uptime: " . $uptimearr[0] . " " . $day . " " . $uptimearr[1] . " hours " . $uptimearr[2] . " minutes\n", $log);
-        }
-    } else {
-        $uptime = explode(' up ', $uptime);
-        $uptime = explode(',', $uptime[1]);
-        $uptime = explode(':', $uptime[0]);
-
-        if ($uptime[0] < 2) {
-            $hourperiod = 'hour';
-        } else {
-            $hourperiod = 'hours';
+            debugging::debug("[DEBUG_COLLECT] Users: " . str_replace(",", ", ", $this->returnusers) . "\n", $log);
         }
 
-        if ($uptime[1] == 1) {
-            $minperiod = 'minute';
-        } else {
-            $minperiod = 'minutes';
-        }
-
-        $hours = $uptime[0];
-        $mins = $uptime[1];
-
-        $uptime = $uptime[0] . "," . $uptime[1];
-
-        if ($debug == TRUE) {
-            debugging::debug("[DEBUG_COLLECT] Uptime: " . $hours . " " . $hourperiod . " " . $mins . " " . $minperiod . "\n", $log);
-        }
+        return $this->returnusers;
 
     }
-
-    return $uptime;
-}
-
-function collect_users($debug, $log) {
-    exec('who', $who);
-
-    foreach ($who as $key => $value) {
-        $user = explode(" ", $value);
-        $users[$key] = $user[0];
-    }
-
-    foreach ($users as $key => $value) {
-        $returnusers = $users[$key] . ",";
-    }
-	
-	if ($returnusers == "" || $returnusers == NULL) {
-		$returnusers = "Nobody is logged in";
-	}
-
-    if ($debug == TRUE) {
-        debugging::debug("[DEBUG_COLLECT] Users: " . str_replace(",", ", ", $returnusers) . "\n", $log);
-    }
-
-    return $returnusers;
 
 }
 ?>
