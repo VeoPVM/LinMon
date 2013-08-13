@@ -49,7 +49,7 @@ echo "LinMon slave version " . VERSION . " started \n\n";
 
 $version->checkVersion();
 
-$debugging->collectionInterval(DEBUG, INTERVAL, LOG);
+$debugging->collectionInterval(INTERVAL);
 
 while (true) {
     $debugging->collectionInfoStart();
