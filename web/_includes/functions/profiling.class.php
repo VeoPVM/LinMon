@@ -11,7 +11,7 @@ class profile {
     public function endProfile($start) {
         $this->end = microtime(true);
         $this->end = $this->end - $this->start;
-        $this->end = round($this->end);
+        $this->end = round($this->end, 2);
         
         return $this->end;
     }
