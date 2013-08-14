@@ -3,7 +3,7 @@ function getNode() {
 
 	include('_includes/config/config.php');
 	
-	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+	$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME, COMPRESS);
 	
 	$getDistinctNodes = $connect->query("SELECT DISTINCT(id) FROM `data` ORDER BY `id`");
 	
