@@ -5,7 +5,9 @@ ini_set('display_errors',1);
  error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // Configuration
+include('_includes/config/defaults.php');
 include('_includes/config/config.php');
+
 
 // Database Functions
 include('_includes/functions/database.php');
@@ -21,8 +23,9 @@ define("DBUSER", $config['dbuser']);
 define("DBPASS", $config['dbpass']);
 define("DBHOST", $config['dbhost']);
 define("DBNAME", $config['dbname']);
+define("COMPRESS", $config['compress']);
 
-$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+$connect = db_connect(DBHOST, DBUSER, DBPASS, DBNAME, COMPRESS);
 
 //Display correct page
 if (!isset($_GET["p"])){ //See if page is set in URL

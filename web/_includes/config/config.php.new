@@ -16,4 +16,7 @@ $config['wacpu'] = false;
 
 // Timeout for status check. Integer, sconds. 
 $config['timeout'] = 300;
+
+// Enable MySQL compression.  This will result in better performance as long as the MySQL server is not on the same machine as the web server.  Boolean.
+$config['compress'] = TRUE;
 ?>
