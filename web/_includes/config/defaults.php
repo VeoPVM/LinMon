@@ -9,5 +9,5 @@ $config['wacpu'] = false;
 
 $config['timeout'] = 300;
 
-$config['compression'] = TRUE;
+$config['compress'] = TRUE;
 ?>
