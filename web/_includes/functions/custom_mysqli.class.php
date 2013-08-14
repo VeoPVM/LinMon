@@ -5,7 +5,7 @@ class custom_mysqli extends mysqli {
         parent::init();
 
         if ($compress = TRUE) {
-            parent::real_connect($host, $user, $pass, $db, '', '', MYSQLI_CLIENT_COMPRESS);
+            parent::real_connect($host, $user, $pass, $db, NULL, NULL, MYSQLI_CLIENT_COMPRESS);
         } else {
             parent::real_connect($host, $user, $pass, $db);
         }
