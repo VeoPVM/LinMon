@@ -1,8 +1,13 @@
 <?php
-$start = microtime(true);
 
 ini_set('display_errors',1); 
  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+// Profiling
+include('_includes/functions/profiling.class.php');
+
+$profile = new profile();
+$profile_start = $profile->startProfile();
 
 // Configuration
 include('_includes/config/defaults.php');
@@ -87,13 +92,12 @@ if (!file_exists("pages/".$page.".php")){
   
   <div class="row">
   <?php 
-$end = microtime(true);
 $end = round($end - $start, 2);
 
 if ($config['compress'] == TRUE) {
-    echo "<p align=\"center\">Page generated in ".$end." Seconds.  Compression enabled.</p>";
+    echo "<p align=\"center\">Page generated in ".$profile->endProfile($profile_start)." Seconds.  Compression enabled.</p>";
 } else {
-    echo "<p align=\"center\">Page generated in ".$end." Seconds.</p>";
+    echo "<p align=\"center\">Page generated in ".$profile->endProfile($profile_start)." Seconds.</p>";
 }
 ?>
   </div>
