@@ -90,7 +90,7 @@ if (!file_exists("pages/".$page.".php")){
 $end = microtime(true);
 $end = round($end - $start, 2);
 
-if ($config['compress'] = TRUE) {
+if ($config['compress'] == TRUE) {
     echo "<p align=\"center\">Page generated in ".$end." Seconds.  Compression enabled.</p>";
 } else {
     echo "<p align=\"center\">Page generated in ".$end." Seconds.</p>";
